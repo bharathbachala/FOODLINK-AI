@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodLink AI | Marketplace</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🌱 <span>FoodLink</span> AI
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-link">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="farmer.html" class="nav-link">
+                👨‍🌾 <span>Farmer</span>
+            </a>
+
+            <a href="marketplace.html" class="nav-link active">
+                🛒 <span>Marketplace</span>
+            </a>
+
+            <a href="ai.html" class="nav-link">
+                🤖 <span>AI Prediction</span>
+            </a>
+
+            <a href="ngo.html" class="nav-link">
+                🤝 <span>NGO</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                📊 <span>Analytics</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>🌍 Reducing Food Waste</p>
+            <small>Farm → Market → Consumer</small>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Food Marketplace</h1>
+
+                <p>
+                    Find fresh surplus food before it becomes waste
+                </p>
+            </div>
+
+            <div class="user-profile">
+
+                <div class="avatar">
+                    BY
+                </div>
+
+                <div>
+                    <strong>Buyer</strong>
+                    <small>Marketplace User</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome">
+
+            <div>
+
+                <h2>Save food. Save money. 🌱</h2>
+
+                <p>
+                    Discover surplus food from local farmers,
+                    retailers and suppliers at better prices.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-button"
+                onclick="showAllFood()"
+            >
+                🔍 Find Food
+            </button>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="dashboard-card marketplace-search">
+
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="foodSearch"
+                    placeholder="🔍 Search for tomatoes, rice, bananas..."
+                >
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="vegetables">
+                        Vegetables
+                    </option>
+
+                    <option value="fruits">
+                        Fruits
+                    </option>
+
+                    <option value="grains">
+                        Grains
+                    </option>
+
+                    <option value="dairy">
+                        Dairy
+                    </option>
+
+                </select>
+
+                <button
+                    class="search-button"
+                    onclick="searchFood()"
+                >
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MARKETPLACE STATS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    🥬
+                </div>
+
+                <div>
+
+                    <p>Available Food</p>
+
+                    <h2>42</h2>
+
+                    <small>Active listings</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    💰
+                </div>
+
+                <div>
+
+                    <p>Average Discount</p>
+
+                    <h2>28%</h2>
+
+                    <small>Compared to market price</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📍
+                </div>
+
+                <div>
+
+                    <p>Nearby Sellers</p>
+
+                    <h2>18</h2>
+
+                    <small>Within 25 KM</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <p>Urgent Food</p>
+
+                    <h2>9</h2>
+
+                    <small>Needs quick action</small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOD LISTINGS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>🛒 Available Food</h3>
+
+                    <p>
+                        Surplus food available from verified sellers
+                    </p>
+
+                </div>
+
+                <span class="ai-status">
+                    LIVE LISTINGS
+                </span>
+
+            </div>
+
+
+            <div
+                class="marketplace-grid"
+                id="marketplaceGrid"
+            >
+
+
+                <!-- TOMATO -->
+
+                <div
+                    class="market-card"
+                    data-name="tomatoes"
+                    data-category="vegetables"
+                >
+
+                    <div class="market-image tomato-large">
+                        🍅
+                    </div>
+
+                    <div class="market-content">
+
+                        <div class="market-title">
+
+                            <div>
+                                <h3>Fresh Tomatoes</h3>
+
+                                <small>
+                                    👨‍🌾 Local Farmer
+                                </small>
+                            </div>
+
+                            <span class="discount">
+                                -30%
+                            </span>
+
+                        </div>
+
+
+                        <div class="market-details">
+
+                            <span>
+                                📦 100 KG
+                            </span>
+
+                            <span>
+                                📍 Ahmedabad
+                            </span>
+
+                            <span>
+                                ⏳ 3 days
+                            </span>
+
+                        </div>
+
+
+                        <div class="price-section">
+
+                            <div>
+
+                                <span class="old-price">
+                                    ₹45/kg
+                                </span>
+
+                                <strong>
+                                    ₹30/kg
+                                </strong>
+
+                            </div>
+
+                            <span class="risk-high">
+                                87% Risk
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="buy-button"
+                            onclick="requestFood('Fresh Tomatoes', 100, 30)"
+                        >
+                            Request Food
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BANANA -->
+
+                <div
+                    class="market-card"
+                    data-name="bananas"
+                    data-category="fruits"
+                >
+
+                    <div class="market-image banana-large">
+                        🍌
+                    </div>
+
+                    <div class="market-content">
+
+                        <div class="market-title">
+
+                            <div>
+                                <h3>Fresh Bananas</h3>
+
+                                <small>
+                                    👨‍🌾 Local Farmer
+                                </small>
+                            </div>
+
+                            <span class="discount">
+                                -25%
+                            </span>
+
+                        </div>
+
+
+                        <div class="market-details">
+
+                            <span>
+                                📦 75 KG
+                            </span>
+
+                            <span>
+                                📍 Ahmedabad
+                            </span>
+
+                            <span>
+                                ⏳ 2 days
+                            </span>
+
+                        </div>
+
+
+                        <div class="price-section">
+
+                            <div>
+
+                                <span class="old-price">
+                                    ₹40/kg
+                                </span>
+
+                                <strong>
+                                    ₹30/kg
+                                </strong>
+
+                            </div>
+
+                            <span class="risk-high">
+                                73% Risk
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="buy-button"
+                            onclick="requestFood('Fresh Bananas', 75, 30)"
+                        >
+                            Request Food
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- POTATO -->
+
+                <div
+                    class="market-card"
+                    data-name="potatoes"
+                    data-category="vegetables"
+                >
+
+                    <div class="market-image potato-large">
+                        🥔
+                    </div>
+
+                    <div class="market-content">
+
+                        <div class="market-title">
+
+                            <div>
+                                <h3>Fresh Potatoes</h3>
+
+                                <small>
+                                    👨‍🌾 Local Farmer
+                                </small>
+                            </div>
+
+                            <span class="discount">
+                                -15%
+                            </span>
+
+                        </div>
+
+
+                        <div class="market-details">
+
+                            <span>
+                                📦 150 KG
+                            </span>
+
+                            <span>
+                                📍 Ahmedabad
+                            </span>
+
+                            <span>
+                                ⏳ 7 days
+                            </span>
+
+                        </div>
+
+
+                        <div class="price-section">
+
+                            <div>
+
+                                <span class="old-price">
+                                    ₹35/kg
+                                </span>
+
+                                <strong>
+                                    ₹30/kg
+                                </strong>
+
+                            </div>
+
+                            <span class="risk-medium">
+                                42% Risk
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="buy-button"
+                            onclick="requestFood('Fresh Potatoes', 150, 30)"
+                        >
+                            Request Food
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RICE -->
+
+                <div
+                    class="market-card"
+                    data-name="rice"
+                    data-category="grains"
+                >
+
+                    <div class="market-image rice-large">
+                        🍚
+                    </div>
+
+                    <div class="market-content">
+
+                        <div class="market-title">
+
+                            <div>
+                                <h3>Premium Rice</h3>
+
+                                <small>
+                                    🏪 Local Supplier
+                                </small>
+                            </div>
+
+                            <span class="discount">
+                                -10%
+                            </span>
+
+                        </div>
+
+
+                        <div class="market-details">
+
+                            <span>
+                                📦 300 KG
+                            </span>
+
+                            <span>
+                                📍 Ahmedabad
+                            </span>
+
+                            <span>
+                                ⏳ 30 days
+                            </span>
+
+                        </div>
+
+
+                        <div class="price-section">
+
+                            <div>
+
+                                <span class="old-price">
+                                    ₹55/kg
+                                </span>
+
+                                <strong>
+                                    ₹49/kg
+                                </strong>
+
+                            </div>
+
+                            <span class="risk-low">
+                                15% Risk
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="buy-button"
+                            onclick="requestFood('Premium Rice', 300, 49)"
+                        >
+                            Request Food
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SMART MATCHING ================= -->
+
+        <section class="dashboard-card smart-match">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>🤖 AI Smart Matching</h3>
+
+                    <p>
+                        FoodLink AI recommends the best food
+                        based on your location and needs
+                    </p>
+
+                </div>
+
+                <span class="ai-status">
+                    AI ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="match-result">
+
+                <div class="match-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <strong>
+                        Best Match Found
+                    </strong>
+
+                    <p>
+                        Fresh Tomatoes are highly suitable
+                        for your location and have an 87%
+                        waste risk.
+                    </p>
+
+                </div>
+
+                <button
+                    class="secondary-button match-button"
+                    onclick="requestFood('Fresh Tomatoes', 100, 30)"
+                >
+                    View Match
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                🌱 <strong>FoodLink AI</strong> —
+                Connecting Farm → Market → Consumer
+            </p>
+
+            <p>
+                © 2026 FoodLink AI Hackathon Project
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

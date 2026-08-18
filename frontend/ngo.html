@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodLink AI | NGO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🌱 <span>FoodLink</span> AI
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-link">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="farmer.html" class="nav-link">
+                👨‍🌾 <span>Farmer</span>
+            </a>
+
+            <a href="marketplace.html" class="nav-link">
+                🛒 <span>Marketplace</span>
+            </a>
+
+            <a href="ai.html" class="nav-link">
+                🤖 <span>AI Prediction</span>
+            </a>
+
+            <a href="ngo.html" class="nav-link active">
+                🤝 <span>NGO</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                📊 <span>Analytics</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>🌍 Reducing Food Waste</p>
+            <small>Farm → Market → Consumer</small>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>NGO Food Rescue</h1>
+
+                <p>
+                    Connect surplus food with people who need it
+                </p>
+
+            </div>
+
+            <div class="user-profile">
+
+                <div class="avatar">
+                    NGO
+                </div>
+
+                <div>
+
+                    <strong>NGO Partner</strong>
+
+                    <small>
+                        Food Rescue Organization
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome">
+
+            <div>
+
+                <h2>
+                    Rescue food before it is wasted 🤝
+                </h2>
+
+                <p>
+                    Find suitable surplus food from farmers
+                    and suppliers and request donations.
+                </p>
+
+            </div>
+
+            <span class="ai-status">
+                VERIFIED NGO
+            </span>
+
+        </section>
+
+
+        <!-- ================= NGO STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    🍚
+                </div>
+
+                <div>
+
+                    <p>Food Received</p>
+
+                    <h2>
+                        420 <span>KG</span>
+                    </h2>
+
+                    <small>
+                        This month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    👨‍👩‍👧
+                </div>
+
+                <div>
+
+                    <p>People Served</p>
+
+                    <h2>
+                        850
+                    </h2>
+
+                    <small>
+                        Beneficiaries
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    🚚
+                </div>
+
+                <div>
+
+                    <p>Active Donations</p>
+
+                    <h2>
+                        12
+                    </h2>
+
+                    <small>
+                        Awaiting pickup
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <p>Urgent Food</p>
+
+                    <h2>
+                        6
+                    </h2>
+
+                    <small>
+                        Needs quick pickup
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AVAILABLE DONATIONS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>
+                        🤝 Available Food Donations
+                    </h3>
+
+                    <p>
+                        Food that can be rescued immediately
+                    </p>
+
+                </div>
+
+                <span class="ai-status">
+                    LIVE
+                </span>
+
+            </div>
+
+
+            <div class="donation-list">
+
+
+                <!-- TOMATO DONATION -->
+
+                <div class="donation-card">
+
+                    <div class="donation-food">
+
+                        <div class="donation-icon tomato-large">
+                            🍅
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Fresh Tomatoes
+                            </h3>
+
+                            <p>
+                                👨‍🌾 Local Farmer
+                            </p>
+
+                            <div class="donation-tags">
+
+                                <span>
+                                    📦 20 KG
+                                </span>
+
+                                <span>
+                                    📍 5 KM away
+                                </span>
+
+                                <span class="urgent-tag">
+                                    ⚠️ Urgent
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="donation-info">
+
+                        <div>
+
+                            <small>
+                                Shelf Life
+                            </small>
+
+                            <strong>
+                                2 days
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Waste Risk
+                            </small>
+
+                            <strong class="risk-high">
+                                87%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="donate-button"
+                        onclick="requestDonation(
+                            'Fresh Tomatoes',
+                            20,
+                            '2 days'
+                        )"
+                    >
+                        🤝 Request Donation
+                    </button>
+
+                </div>
+
+
+                <!-- BANANA DONATION -->
+
+                <div class="donation-card">
+
+                    <div class="donation-food">
+
+                        <div class="donation-icon banana-large">
+                            🍌
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Fresh Bananas
+                            </h3>
+
+                            <p>
+                                👨‍🌾 Local Farmer
+                            </p>
+
+                            <div class="donation-tags">
+
+                                <span>
+                                    📦 30 KG
+                                </span>
+
+                                <span>
+                                    📍 8 KM away
+                                </span>
+
+                                <span class="urgent-tag">
+                                    ⚠️ Urgent
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="donation-info">
+
+                        <div>
+
+                            <small>
+                                Shelf Life
+                            </small>
+
+                            <strong>
+                                1 day
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Waste Risk
+                            </small>
+
+                            <strong class="risk-high">
+                                91%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="donate-button"
+                        onclick="requestDonation(
+                            'Fresh Bananas',
+                            30,
+                            '1 day'
+                        )"
+                    >
+                        🤝 Request Donation
+                    </button>
+
+                </div>
+
+
+                <!-- POTATO DONATION -->
+
+                <div class="donation-card">
+
+                    <div class="donation-food">
+
+                        <div class="donation-icon potato-large">
+                            🥔
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Fresh Potatoes
+                            </h3>
+
+                            <p>
+                                🏪 Local Supplier
+                            </p>
+
+                            <div class="donation-tags">
+
+                                <span>
+                                    📦 50 KG
+                                </span>
+
+                                <span>
+                                    📍 12 KM away
+                                </span>
+
+                                <span class="normal-tag">
+                                    Normal
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="donation-info">
+
+                        <div>
+
+                            <small>
+                                Shelf Life
+                            </small>
+
+                            <strong>
+                                7 days
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Waste Risk
+                            </small>
+
+                            <strong class="risk-medium">
+                                42%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="donate-button"
+                        onclick="requestDonation(
+                            'Fresh Potatoes',
+                            50,
+                            '7 days'
+                        )"
+                    >
+                        🤝 Request Donation
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI MATCHING ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>
+                        🤖 AI Donation Matching
+                    </h3>
+
+                    <p>
+                        FoodLink AI prioritizes donations based
+                        on urgency and distance
+                    </p>
+
+                </div>
+
+                <span class="ai-status">
+                    AI ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="ngo-match">
+
+                <div class="ngo-match-icon">
+                    🎯
+                </div>
+
+                <div class="ngo-match-content">
+
+                    <strong>
+                        Highest Priority Donation
+                    </strong>
+
+                    <h3>
+                        🍌 Fresh Bananas — 30 KG
+                    </h3>
+
+                    <p>
+                        91% waste risk • 1 day shelf life •
+                        8 KM away
+                    </p>
+
+                    <div class="priority-bar">
+
+                        <div
+                            class="priority-fill"
+                            style="width:91%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="donate-button"
+                    onclick="requestDonation(
+                        'Fresh Bananas',
+                        30,
+                        '1 day'
+                    )"
+                >
+                    Rescue Now
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>
+                        🌱 Food Rescue Process
+                    </h3>
+
+                    <p>
+                        How FoodLink AI prevents edible food
+                        from becoming waste
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        👨‍🌾
+                    </div>
+
+                    <strong>
+                        Surplus Food
+                    </strong>
+
+                    <small>
+                        Farmer or supplier lists
+                        excess food.
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🤖
+                    </div>
+
+                    <strong>
+                        AI Priority
+                    </strong>
+
+                    <small>
+                        AI identifies food with
+                        highest waste risk.
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🤝
+                    </div>
+
+                    <strong>
+                        NGO Rescue
+                    </strong>
+
+                    <small>
+                        NGO accepts the donation
+                        and collects it.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                🌱 <strong>FoodLink AI</strong> —
+                Connecting Farm → Market → Consumer
+            </p>
+
+            <p>
+                © 2026 FoodLink AI Hackathon Project
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

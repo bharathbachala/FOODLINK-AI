@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodLink AI | AI Prediction</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🌱 <span>FoodLink</span> AI
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-link">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="farmer.html" class="nav-link">
+                👨‍🌾 <span>Farmer</span>
+            </a>
+
+            <a href="marketplace.html" class="nav-link">
+                🛒 <span>Marketplace</span>
+            </a>
+
+            <a href="ai.html" class="nav-link active">
+                🤖 <span>AI Prediction</span>
+            </a>
+
+            <a href="ngo.html" class="nav-link">
+                🤝 <span>NGO</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                📊 <span>Analytics</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>🌍 Reducing Food Waste</p>
+            <small>Farm → Market → Consumer</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>AI Food Waste Prediction</h1>
+
+                <p>
+                    Predict food waste risk and get smart recommendations
+                </p>
+            </div>
+
+            <div class="user-profile">
+
+                <div class="avatar">
+                    AI
+                </div>
+
+                <div>
+                    <strong>FoodLink AI</strong>
+                    <small>Prediction Engine</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- INTRO -->
+        <section class="welcome">
+
+            <div>
+
+                <h2>Predict before food becomes waste 🤖</h2>
+
+                <p>
+                    Enter food information and FoodLink AI will
+                    estimate waste risk and recommend the best action.
+                </p>
+
+            </div>
+
+            <span class="ai-status">
+                AI ACTIVE
+            </span>
+
+        </section>
+
+
+        <!-- INPUT FORM -->
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>📊 Food Information</h3>
+
+                    <p>
+                        Enter the current food details
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="aiPredictionForm" class="food-form">
+
+                <div class="form-group">
+
+                    <label for="aiFoodName">
+                        Food Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="aiFoodName"
+                        placeholder="Example: Tomatoes"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiCategory">
+                        Category
+                    </label>
+
+                    <select id="aiCategory" required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="vegetables">
+                            Vegetables
+                        </option>
+
+                        <option value="fruits">
+                            Fruits
+                        </option>
+
+                        <option value="grains">
+                            Grains
+                        </option>
+
+                        <option value="dairy">
+                            Dairy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiQuantity">
+                        Quantity (KG)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="aiQuantity"
+                        placeholder="Example: 100"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiPrice">
+                        Current Price (₹ / KG)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="aiPrice"
+                        placeholder="Example: 30"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiShelfLife">
+                        Remaining Shelf Life (Days)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="aiShelfLife"
+                        placeholder="Example: 3"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiDemand">
+                        Current Demand
+                    </label>
+
+                    <select id="aiDemand" required>
+
+                        <option value="">
+                            Select demand
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiLocation">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="aiLocation"
+                        placeholder="Example: Ahmedabad"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiQuality">
+                        Food Quality
+                    </label>
+
+                    <select id="aiQuality" required>
+
+                        <option value="">
+                            Select quality
+                        </option>
+
+                        <option value="excellent">
+                            Excellent
+                        </option>
+
+                        <option value="good">
+                            Good
+                        </option>
+
+                        <option value="average">
+                            Average
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="reset"
+                        class="reset-button"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        🤖 Analyze Food
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- AI RESULT -->
+        <section
+            class="dashboard-card"
+            id="aiResult"
+            style="display:none;"
+        >
+
+            <div class="card-header">
+
+                <div>
+                    <h3>🤖 AI Analysis Result</h3>
+
+                    <p>
+                        FoodLink AI prediction
+                    </p>
+                </div>
+
+                <span class="ai-status">
+                    ANALYZED
+                </span>
+
+            </div>
+
+
+            <!-- RESULT SUMMARY -->
+            <div class="ai-result-grid">
+
+                <div class="prediction-box">
+
+                    <span>Waste Risk</span>
+
+                    <strong id="resultRisk">
+                        87%
+                    </strong>
+
+                    <small id="resultRiskLevel">
+                        HIGH RISK
+                    </small>
+
+                </div>
+
+
+                <div class="prediction-box">
+
+                    <span>Demand</span>
+
+                    <strong id="resultDemand">
+                        LOW
+                    </strong>
+
+                    <small>
+                        Current market demand
+                    </small>
+
+                </div>
+
+
+                <div class="prediction-box">
+
+                    <span>Urgency</span>
+
+                    <strong id="resultUrgency">
+                        HIGH
+                    </strong>
+
+                    <small>
+                        Recommended action
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="ai-risk-result">
+
+                <div class="result-heading">
+
+                    <strong>
+                        Waste Risk Score
+                    </strong>
+
+                    <span id="resultPercentage">
+                        87%
+                    </span>
+
+                </div>
+
+                <div class="progress-bar large-progress">
+
+                    <div
+                        class="progress-fill"
+                        id="resultProgress"
+                        style="width:87%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDATION -->
+            <div class="recommendation-box">
+
+                <h3>
+                    💡 AI Recommended Action
+                </h3>
+
+                <div
+                    id="recommendationContent"
+                >
+
+                    <div class="recommendation-item">
+                        <span>🏪</span>
+
+                        <p>
+                            Sell surplus food to nearby
+                            restaurants and retailers.
+                        </p>
+                    </div>
+
+                    <div class="recommendation-item">
+                        <span>🤝</span>
+
+                        <p>
+                            Donate part of the stock to
+                            verified NGOs.
+                        </p>
+                    </div>
+
+                    <div class="recommendation-item">
+                        <span>🏷️</span>
+
+                        <p>
+                            Apply a discount to accelerate
+                            consumer purchases.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW AI WORKS -->
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>🧠 How FoodLink AI Works</h3>
+
+                    <p>
+                        Our decision-support workflow
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        📦
+                    </div>
+
+                    <strong>
+                        Food Data
+                    </strong>
+
+                    <small>
+                        Quantity, price, shelf life,
+                        demand and location
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🧠
+                    </div>
+
+                    <strong>
+                        AI Analysis
+                    </strong>
+
+                    <small>
+                        Analyze demand and spoilage
+                        risk
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🎯
+                    </div>
+
+                    <strong>
+                        Smart Action
+                    </strong>
+
+                    <small>
+                        Recommend selling, discounting
+                        or donation
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <p>
+                🌱 <strong>FoodLink AI</strong> —
+                Connecting Farm → Market → Consumer
+            </p>
+
+            <p>
+                © 2026 FoodLink AI Hackathon Project
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

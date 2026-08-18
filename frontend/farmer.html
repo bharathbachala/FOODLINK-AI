@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodLink AI | Farmer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🌱 <span>FoodLink</span> AI
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-link">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="farmer.html" class="nav-link active">
+                👨‍🌾 <span>Farmer</span>
+            </a>
+
+            <a href="marketplace.html" class="nav-link">
+                🛒 <span>Marketplace</span>
+            </a>
+
+            <a href="ai.html" class="nav-link">
+                🤖 <span>AI Prediction</span>
+            </a>
+
+            <a href="ngo.html" class="nav-link">
+                🤝 <span>NGO</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                📊 <span>Analytics</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>🌍 Reducing Food Waste</p>
+            <small>Farm → Market → Consumer</small>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Farmer Dashboard</h1>
+
+                <p>
+                    List surplus food and connect with buyers
+                </p>
+            </div>
+
+            <div class="user-profile">
+
+                <div class="avatar">
+                    FR
+                </div>
+
+                <div>
+                    <strong>Farmer</strong>
+                    <small>Food Supplier</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome">
+
+            <div>
+
+                <h2>Sell your surplus food 🌾</h2>
+
+                <p>
+                    Add your available food and let FoodLink AI
+                    help you find the best selling or donation option.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FARMER FORM ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>➕ Add Food Listing</h3>
+
+                    <p>
+                        Enter details about your available food
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="foodForm" class="food-form">
+
+
+                <!-- FOOD NAME -->
+
+                <div class="form-group">
+
+                    <label for="foodName">
+                        Food Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="foodName"
+                        placeholder="Example: Tomatoes"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="vegetables">
+                            Vegetables
+                        </option>
+
+                        <option value="fruits">
+                            Fruits
+                        </option>
+
+                        <option value="grains">
+                            Grains
+                        </option>
+
+                        <option value="dairy">
+                            Dairy
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="form-group">
+
+                    <label for="quantity">
+                        Quantity (KG)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        placeholder="Example: 100"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Current Price (₹ / KG)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        placeholder="Example: 30"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SHELF LIFE -->
+
+                <div class="form-group">
+
+                    <label for="shelfLife">
+                        Shelf Life (Days)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="shelfLife"
+                        placeholder="Example: 3"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Example: Ahmedabad"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group full-width">
+
+                    <label for="description">
+                        Additional Information
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="Enter additional information about the food..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="reset"
+                        class="reset-button"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        🌱 Add Food Listing
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= AI PREVIEW ================= -->
+
+        <section class="dashboard-card ai-preview">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>🤖 What happens next?</h3>
+
+                    <p>
+                        FoodLink AI automatically analyzes your listing
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        📦
+                    </div>
+
+                    <strong>
+                        1. Food Listed
+                    </strong>
+
+                    <small>
+                        Your surplus food enters the marketplace.
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🤖
+                    </div>
+
+                    <strong>
+                        2. AI Analysis
+                    </strong>
+
+                    <small>
+                        AI calculates demand and waste risk.
+                    </small>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    →
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-icon">
+                        🤝
+                    </div>
+
+                    <strong>
+                        3. Smart Matching
+                    </strong>
+
+                    <small>
+                        Food is matched with buyers or NGOs.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECENT LISTINGS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>📦 Recent Listings</h3>
+
+                    <p>
+                        Your recently added food
+                    </p>
+
+                </div>
+
+                <span class="ai-status">
+                    3 ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="food-list">
+
+                <div class="food-item">
+
+                    <div class="food-info">
+
+                        <div class="food-image tomato">
+                            🍅
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Tomatoes
+                            </strong>
+
+                            <small>
+                                100 KG • Ahmedabad
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="risk">
+
+                        <span class="risk-high">
+                            87%
+                        </span>
+
+                        <small>
+                            Waste Risk
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-item">
+
+                    <div class="food-info">
+
+                        <div class="food-image banana">
+                            🍌
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Bananas
+                            </strong>
+
+                            <small>
+                                75 KG • Ahmedabad
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="risk">
+
+                        <span class="risk-high">
+                            73%
+                        </span>
+
+                        <small>
+                            Waste Risk
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                🌱 <strong>FoodLink AI</strong> —
+                Connecting Farm → Market → Consumer
+            </p>
+
+            <p>
+                © 2026 FoodLink AI Hackathon Project
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
