@@ -2,516 +2,2705 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FoodLink AI | Farmer</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodLink | Farmer</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           FARMER HERO
+           ========================= */
+
+        .farmer-hero {
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #34734c,
+                    #438a5a
+                );
+
+            color: white;
+
+            border-radius: 24px;
+
+            padding: 32px;
+
+            margin-bottom: 28px;
+
+        }
+
+        .farmer-hero h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .farmer-hero p {
+
+            color: #e0f0e4;
+
+            max-width: 700px;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           FARMER STATS
+           ========================= */
+
+        .farmer-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 28px;
+
+        }
+
+        .farmer-stat {
+
+            background: white;
+
+            border:
+                1px solid #e1e8e4;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+        }
+
+        .farmer-stat-icon {
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .farmer-stat small {
+
+            display: block;
+
+            color: #89958f;
+
+            font-size: 10px;
+
+        }
+
+        .farmer-stat strong {
+
+            display: block;
+
+            color: #30483a;
+
+            font-size: 22px;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* =========================
+           MAIN GRID
+           ========================= */
+
+        .farmer-main-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                0.8fr;
+
+            gap: 20px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        .farmer-form-card {
+
+            background: white;
+
+            border:
+                1px solid #e1e8e4;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+        }
+
+        .farmer-form-header {
+
+            margin-bottom: 22px;
+
+        }
+
+        .farmer-form-header h2 {
+
+            color: #30483a;
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+
+        }
+
+        .farmer-form-header p {
+
+            color: #89958f;
+
+            font-size: 12px;
+
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 16px;
+
+        }
+
+        .form-group {
+
+            margin-bottom: 5px;
+
+        }
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+
+        }
+
+        .form-group label {
+
+            display: block;
+
+            color: #596960;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 12px;
+
+            border:
+                1px solid #dce5df;
+
+            border-radius: 10px;
+
+            background: #fbfdfb;
+
+            color: #30483a;
+
+            outline: none;
+
+            font-size: 12px;
+
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #5ba66c;
+
+        }
+
+        .form-group textarea {
+
+            min-height: 90px;
+
+            resize: vertical;
+
+        }
+
+
+        .analyze-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #4f9c62;
+
+            color: white;
+
+            padding: 14px;
+
+            margin-top: 20px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+        .analyze-button:hover {
+
+            background: #438b55;
+
+        }
+
+
+        /* =========================
+           AI PREVIEW
+           ========================= */
+
+        .ai-preview {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3f8f4,
+                    #eaf5ed
+                );
+
+            border:
+                1px solid #d7e8da;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+        }
+
+        .ai-preview-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 22px;
+
+        }
+
+        .ai-preview-header h2 {
+
+            color: #30483a;
+
+            font-size: 18px;
+
+        }
+
+        .ai-preview-badge {
+
+            background: #e5f3e8;
+
+            color: #428a52;
+
+            padding: 6px 9px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+        }
+
+
+        .ai-preview-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 36px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .ai-preview h3 {
+
+            color: #30483a;
+
+            font-size: 17px;
+
+            margin-bottom: 6px;
+
+        }
+
+        .ai-preview > p {
+
+            color: #7e8b84;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .preview-item {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            padding: 12px 0;
+
+            border-bottom:
+                1px solid #dce9df;
+
+        }
+
+        .preview-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+        .preview-item span {
+
+            color: #77857d;
+
+            font-size: 11px;
+
+        }
+
+        .preview-item strong {
+
+            color: #397c4c;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================
+           PRODUCE TABLE
+           ========================= */
+
+        .produce-list {
+
+            background: white;
+
+            border:
+                1px solid #e1e8e4;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 28px;
+
+        }
+
+        .produce-list-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 18px;
+
+        }
+
+        .produce-list-header h2 {
+
+            color: #30483a;
+
+            font-size: 19px;
+
+        }
+
+        .produce-list-header p {
+
+            color: #89958f;
+
+            font-size: 11px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .produce-table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+        }
+
+        .produce-table th {
+
+            text-align: left;
+
+            color: #89958f;
+
+            font-size: 10px;
+
+            padding: 12px;
+
+            background: #f7faf8;
+
+        }
+
+        .produce-table td {
+
+            padding: 14px 12px;
+
+            border-bottom:
+                1px solid #edf1ee;
+
+            color: #4e5e54;
+
+            font-size: 11px;
+
+        }
+
+        .produce-table tr:last-child td {
+
+            border-bottom: none;
+
+        }
+
+
+        .food-name {
+
+            color: #30483a;
+
+            font-weight: 700;
+
+        }
+
+
+        .risk-badge {
+
+            display: inline-block;
+
+            padding: 5px 8px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+        }
+
+        .risk-high {
+
+            background: #fde8e7;
+
+            color: #d94d47;
+
+        }
+
+        .risk-medium {
+
+            background: #fff4dc;
+
+            color: #bd8227;
+
+        }
+
+        .risk-low {
+
+            background: #e5f3e8;
+
+            color: #428a52;
+
+        }
+
+
+        /* =========================
+           IMPACT
+           ========================= */
+
+        .farmer-impact {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #294f38,
+                    #356b49
+                );
+
+            color: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 28px;
+
+        }
+
+        .farmer-impact h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+
+        }
+
+        .farmer-impact > p {
+
+            color: #dcece0;
+
+            font-size: 11px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .impact-items {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+        .impact-item {
+
+            background:
+                rgba(255,255,255,0.09);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+        }
+
+        .impact-item span {
+
+            font-size: 22px;
+
+        }
+
+        .impact-item strong {
+
+            display: block;
+
+            font-size: 20px;
+
+            margin-top: 6px;
+
+        }
+
+        .impact-item small {
+
+            color: #c9dfcf;
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================
+           SUCCESS MODAL
+           ========================= */
+
+        .farmer-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(20,45,32,0.55);
+
+            z-index: 10000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+        }
+
+        .farmer-modal-box {
+
+            background: white;
+
+            width: min(500px, 100%);
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,0.25);
+
+        }
+
+        .farmer-modal-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 20px;
+
+            background: #e5f3e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 35px;
+
+            margin:
+                0 auto 15px;
+
+        }
+
+        .farmer-modal-box h2 {
+
+            color: #30483a;
+
+            margin-bottom: 7px;
+
+        }
+
+        .farmer-modal-box p {
+
+            color: #7e8b84;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+        .modal-risk {
+
+            margin: 18px 0;
+
+            padding: 15px;
+
+            background: #fde8e7;
+
+            border-radius: 13px;
+
+        }
+
+        .modal-risk strong {
+
+            display: block;
+
+            color: #d94d47;
+
+            font-size: 30px;
+
+        }
+
+        .modal-risk span {
+
+            color: #d94d47;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+        }
+
+        .modal-action {
+
+            background: #f5faf6;
+
+            padding: 15px;
+
+            border-radius: 13px;
+
+            margin-bottom: 18px;
+
+        }
+
+        .modal-action strong {
+
+            color: #397c4c;
+
+            font-size: 12px;
+
+        }
+
+        .modal-close-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #4f9c62;
+
+            color: white;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 1000px) {
+
+            .farmer-stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+            .farmer-main-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .form-group.full {
+
+                grid-column: auto;
+
+            }
+
+            .impact-items {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .produce-table {
+
+                min-width: 650px;
+
+            }
+
+            .produce-list {
+
+                overflow-x: auto;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .farmer-stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .farmer-hero {
+
+                padding: 25px;
+
+            }
+
+            .farmer-hero h2 {
+
+                font-size: 24px;
+
+            }
+
+        }
+
+    
+        /* =====================================================
+           DASHBOARD STYLE OVERRIDES — CSS ONLY
+           Farmer HTML + JavaScript remain unchanged.
+           ===================================================== */
+
+        body {
+            background: #f4f7f5 !important;
+            color: #263b31 !important;
+        }
+
+        .sidebar {
+            width: 270px !important;
+            height: 100vh !important;
+            background: #173c2b !important;
+            color: white !important;
+            padding: 30px 16px !important;
+            border: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        .brand {
+            gap: 12px !important;
+            padding: 0 14px !important;
+            margin-bottom: 35px !important;
+        }
+
+        .brand-icon {
+            font-size: 38px !important;
+            width: auto !important;
+            height: auto !important;
+            background: transparent !important;
+        }
+
+        .brand h1 {
+            font-size: 25px !important;
+            color: white !important;
+        }
+
+        .brand span {
+            margin-top: 3px !important;
+            font-size: 12px !important;
+            color: #8ee09e !important;
+            letter-spacing: .5px !important;
+        }
+
+        .sidebar-nav {
+            gap: 7px !important;
+        }
+
+        .nav-item {
+            gap: 16px !important;
+            min-height: 54px !important;
+            padding: 0 18px !important;
+            border-radius: 15px !important;
+            color: #e5eee9 !important;
+            font-size: 16px !important;
+        }
+
+        .nav-item span:first-child {
+            width: 25px !important;
+            font-size: 20px !important;
+        }
+
+        .nav-item:hover {
+            background: #28553d !important;
+            transform: translateX(3px) !important;
+        }
+
+        .nav-item.active {
+            background: #59a66b !important;
+            color: white !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,.12) !important;
+        }
+
+        .ai-status {
+            margin-top: auto !important;
+            left: auto !important; right: auto !important; bottom: auto !important;
+            padding: 15px !important;
+            border-radius: 14px !important;
+            background: rgba(255,255,255,.07) !important;
+            border: 1px solid rgba(255,255,255,.08) !important;
+        }
+
+        .status-dot {
+            width: 11px !important; height: 11px !important;
+            background: #69d77c !important;
+            box-shadow: 0 0 0 5px rgba(105,215,124,.12) !important;
+        }
+
+        .ai-status strong { font-size: 14px !important; }
+        .ai-status small { font-size: 12px !important; color: #a8c8b3 !important; }
+
+        .main-content {
+            margin-left: 270px !important;
+            min-height: 100vh !important;
+            padding: 42px 48px !important;
+            max-width: 1600px !important;
+        }
+
+        .farmer-hero {
+            border-radius: 24px !important;
+            padding: 32px 38px !important;
+            min-height: 155px !important;
+            margin-bottom: 30px !important;
+            box-shadow: 0 15px 35px rgba(42,103,66,.16) !important;
+        }
+
+        .farmer-stats {
+            grid-template-columns: repeat(4,minmax(0,1fr)) !important;
+            gap: 18px !important;
+            margin-bottom: 28px !important;
+        }
+
+        .farmer-stat {
+            background: white !important;
+            border: 1px solid #e1e8e4 !important;
+            border-radius: 20px !important;
+            padding: 23px !important;
+            box-shadow: 0 7px 20px rgba(36,58,47,.04) !important;
+        }
+
+        .farmer-main-grid {
+            gap: 28px !important;
+            margin-bottom: 28px !important;
+        }
+
+        .farmer-form-card,
+        .produce-list,
+        .farmer-impact {
+            background: white !important;
+            border: 1px solid #e2e9e5 !important;
+            border-radius: 22px !important;
+            box-shadow: 0 7px 22px rgba(36,58,47,.035) !important;
+        }
+
+        .farmer-form-card { padding: 28px !important; }
+        .produce-list, .farmer-impact { padding: 28px !important; }
+
+        .analyze-button {
+            background: #4f9c62 !important;
+            color: white !important;
+            border-radius: 12px !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            padding: 13px 20px !important;
+        }
+
+        .analyze-button:hover {
+            background: #438b55 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .ai-preview {
+            border-radius: 24px !important;
+            box-shadow: 0 10px 30px rgba(54,103,68,.07) !important;
+        }
+
+        .footer {
+            padding: 15px 0 5px !important;
+            color: #819088 !important;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content { padding: 35px 30px !important; }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar { width: 220px !important; }
+            .main-content { margin-left: 220px !important; padding: 28px 22px !important; }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                padding: 15px !important;
+                border-radius: 0 !important;
+            }
+            .main-content { margin-left: 0 !important; padding: 25px 15px !important; }
+            .farmer-stats { grid-template-columns: 1fr !important; }
+        }
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- ================= SIDEBAR ================= -->
+
+    <!-- =========================
+         SIDEBAR
+         ========================= -->
 
     <aside class="sidebar">
 
-        <div class="logo">
-            🌱 <span>FoodLink</span> AI
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <h1>FoodLink</h1>
+
+                <span>
+                    FoodPulse AI
+                </span>
+
+            </div>
+
         </div>
 
-        <nav>
 
-            <a href="index.html" class="nav-link">
-                🏠 <span>Dashboard</span>
+        <nav class="sidebar-nav">
+
+            <a
+                href="index.html"
+                class="nav-item">
+
+                <span>🏠</span>
+                <span>Dashboard</span>
+
             </a>
 
-            <a href="farmer.html" class="nav-link active">
-                👨‍🌾 <span>Farmer</span>
+
+            <a
+                href="farmer.html"
+                class="nav-item active">
+
+                <span>🌾</span>
+                <span>Farmer</span>
+
             </a>
 
-            <a href="marketplace.html" class="nav-link">
-                🛒 <span>Marketplace</span>
+
+            <a
+                href="marketplace.html"
+                class="nav-item">
+
+                <span>🏪</span>
+                <span>Marketplace</span>
+
             </a>
 
-            <a href="ai.html" class="nav-link">
-                🤖 <span>AI Prediction</span>
+
+            <a
+                href="ai.html"
+                class="nav-item">
+
+                <span>🤖</span>
+                <span>FoodPulse AI</span>
+
             </a>
 
-            <a href="ngo.html" class="nav-link">
-                🤝 <span>NGO</span>
+
+            <a
+                href="consumer.html"
+                class="nav-item">
+
+                <span>👤</span>
+                <span>Consumer</span>
+
             </a>
 
-            <a href="analytics.html" class="nav-link">
-                📊 <span>Analytics</span>
+
+            <a
+                href="ngo.html"
+                class="nav-item">
+
+                <span>❤️</span>
+                <span>NGO</span>
+
+            </a>
+
+
+            <a
+                href="volunteer.html"
+                class="nav-item">
+
+                <span>🙋</span>
+                <span>Volunteer</span>
+
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="nav-item">
+
+                <span>🚚</span>
+                <span>Tracking</span>
+
+            </a>
+
+
+            <a
+                href="analytics.html"
+                class="nav-item">
+
+                <span>📊</span>
+                <span>Analytics</span>
+
             </a>
 
         </nav>
 
-        <div class="sidebar-bottom">
-            <p>🌍 Reducing Food Waste</p>
-            <small>Farm → Market → Consumer</small>
+
+        <div class="ai-status">
+
+            <div class="status-dot"></div>
+
+            <div>
+
+                <strong>
+                    FoodPulse AI
+                </strong>
+
+                <small>
+                    System Active
+                </small>
+
+            </div>
+
         </div>
 
     </aside>
 
 
-    <!-- ================= MAIN CONTENT ================= -->
+
+    <!-- =========================
+         MAIN CONTENT
+         ========================= -->
 
     <main class="main-content">
 
-        <!-- TOP BAR -->
 
-        <header class="topbar">
+        <!-- HERO -->
 
-            <div>
-                <h1>Farmer Dashboard</h1>
+        <section class="farmer-hero">
 
-                <p>
-                    List surplus food and connect with buyers
-                </p>
-            </div>
+            <h2>
+                🌾 Farmer Food Rescue Center
+            </h2>
 
-            <div class="user-profile">
-
-                <div class="avatar">
-                    FR
-                </div>
-
-                <div>
-                    <strong>Farmer</strong>
-                    <small>Food Supplier</small>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= WELCOME ================= -->
-
-        <section class="welcome">
-
-            <div>
-
-                <h2>Sell your surplus food 🌾</h2>
-
-                <p>
-                    Add your available food and let FoodLink AI
-                    help you find the best selling or donation option.
-                </p>
-
-            </div>
+            <p>
+                Register surplus food and let FoodPulse AI
+                predict waste risk, identify the best destination,
+                and recommend the fastest rescue action.
+            </p>
 
         </section>
 
 
-        <!-- ================= FARMER FORM ================= -->
 
-        <section class="dashboard-card">
+        <!-- =========================
+             STATS
+             ========================= -->
 
-            <div class="card-header">
+        <section class="farmer-stats">
 
-                <div>
 
-                    <h3>➕ Add Food Listing</h3>
+            <div class="farmer-stat">
 
-                    <p>
-                        Enter details about your available food
-                    </p>
-
+                <div class="farmer-stat-icon">
+                    🌾
                 </div>
+
+                <small>
+                    Total Produce
+                </small>
+
+                <strong>
+                    2,450 KG
+                </strong>
 
             </div>
 
 
-            <form id="foodForm" class="food-form">
+            <div class="farmer-stat">
 
-
-                <!-- FOOD NAME -->
-
-                <div class="form-group">
-
-                    <label for="foodName">
-                        Food Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="foodName"
-                        placeholder="Example: Tomatoes"
-                        required
-                    >
-
+                <div class="farmer-stat-icon">
+                    ♻️
                 </div>
 
+                <small>
+                    Waste Prevented
+                </small>
 
-                <!-- CATEGORY -->
+                <strong>
+                    1,250 KG
+                </strong>
 
-                <div class="form-group">
+            </div>
 
-                    <label for="category">
-                        Category
-                    </label>
 
-                    <select id="category" required>
+            <div class="farmer-stat">
 
-                        <option value="">
-                            Select category
-                        </option>
-
-                        <option value="vegetables">
-                            Vegetables
-                        </option>
-
-                        <option value="fruits">
-                            Fruits
-                        </option>
-
-                        <option value="grains">
-                            Grains
-                        </option>
-
-                        <option value="dairy">
-                            Dairy
-                        </option>
-
-                        <option value="other">
-                            Other
-                        </option>
-
-                    </select>
-
+                <div class="farmer-stat-icon">
+                    💰
                 </div>
 
+                <small>
+                    Value Recovered
+                </small>
 
-                <!-- QUANTITY -->
+                <strong>
+                    ₹68,500
+                </strong>
 
-                <div class="form-group">
+            </div>
 
-                    <label for="quantity">
-                        Quantity (KG)
-                    </label>
 
-                    <input
-                        type="number"
-                        id="quantity"
-                        placeholder="Example: 100"
-                        min="1"
-                        required
-                    >
+            <div class="farmer-stat">
 
+                <div class="farmer-stat-icon">
+                    🤖
                 </div>
 
+                <small>
+                    AI Predictions
+                </small>
 
-                <!-- PRICE -->
+                <strong>
+                    186
+                </strong>
 
-                <div class="form-group">
+            </div>
 
-                    <label for="price">
-                        Current Price (₹ / KG)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="price"
-                        placeholder="Example: 30"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- SHELF LIFE -->
-
-                <div class="form-group">
-
-                    <label for="shelfLife">
-                        Shelf Life (Days)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="shelfLife"
-                        placeholder="Example: 3"
-                        min="1"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- LOCATION -->
-
-                <div class="form-group">
-
-                    <label for="location">
-                        Location
-                    </label>
-
-                    <input
-                        type="text"
-                        id="location"
-                        placeholder="Example: Ahmedabad"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- DESCRIPTION -->
-
-                <div class="form-group full-width">
-
-                    <label for="description">
-                        Additional Information
-                    </label>
-
-                    <textarea
-                        id="description"
-                        rows="4"
-                        placeholder="Enter additional information about the food..."
-                    ></textarea>
-
-                </div>
-
-
-                <!-- BUTTON -->
-
-                <div class="form-actions">
-
-                    <button
-                        type="reset"
-                        class="reset-button"
-                    >
-                        Clear
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="submit-button"
-                    >
-                        🌱 Add Food Listing
-                    </button>
-
-                </div>
-
-            </form>
 
         </section>
 
 
-        <!-- ================= AI PREVIEW ================= -->
 
-        <section class="dashboard-card ai-preview">
+        <!-- =========================
+             FORM + AI PREVIEW
+             ========================= -->
 
-            <div class="card-header">
+        <section class="farmer-main-grid">
 
-                <div>
 
-                    <h3>🤖 What happens next?</h3>
+            <!-- FORM -->
+
+            <div class="farmer-form-card">
+
+                <div class="farmer-form-header">
+
+                    <h2>
+                        ➕ Register Surplus Food
+                    </h2>
 
                     <p>
-                        FoodLink AI automatically analyzes your listing
+                        Add your available food so FoodPulse
+                        can analyze its rescue priority.
                     </p>
 
                 </div>
 
-            </div>
+
+                <div class="form-grid">
 
 
-            <div class="process-grid">
+                    <div class="form-group">
 
-                <div class="process-step">
+                        <label>
+                            FOOD TYPE
+                        </label>
 
-                    <div class="process-icon">
-                        📦
-                    </div>
+                        <select id="farmerFood">
 
-                    <strong>
-                        1. Food Listed
-                    </strong>
-
-                    <small>
-                        Your surplus food enters the marketplace.
-                    </small>
-
-                </div>
-
-
-                <div class="process-arrow">
-                    →
-                </div>
-
-
-                <div class="process-step">
-
-                    <div class="process-icon">
-                        🤖
-                    </div>
-
-                    <strong>
-                        2. AI Analysis
-                    </strong>
-
-                    <small>
-                        AI calculates demand and waste risk.
-                    </small>
-
-                </div>
-
-
-                <div class="process-arrow">
-                    →
-                </div>
-
-
-                <div class="process-step">
-
-                    <div class="process-icon">
-                        🤝
-                    </div>
-
-                    <strong>
-                        3. Smart Matching
-                    </strong>
-
-                    <small>
-                        Food is matched with buyers or NGOs.
-                    </small>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= RECENT LISTINGS ================= -->
-
-        <section class="dashboard-card">
-
-            <div class="card-header">
-
-                <div>
-
-                    <h3>📦 Recent Listings</h3>
-
-                    <p>
-                        Your recently added food
-                    </p>
-
-                </div>
-
-                <span class="ai-status">
-                    3 ACTIVE
-                </span>
-
-            </div>
-
-
-            <div class="food-list">
-
-                <div class="food-item">
-
-                    <div class="food-info">
-
-                        <div class="food-image tomato">
-                            🍅
-                        </div>
-
-                        <div>
-
-                            <strong>
+                            <option value="Tomatoes">
                                 Tomatoes
-                            </strong>
+                            </option>
 
-                            <small>
-                                100 KG • Ahmedabad
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <div class="risk">
-
-                        <span class="risk-high">
-                            87%
-                        </span>
-
-                        <small>
-                            Waste Risk
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="food-item">
-
-                    <div class="food-info">
-
-                        <div class="food-image banana">
-                            🍌
-                        </div>
-
-                        <div>
-
-                            <strong>
+                            <option value="Bananas">
                                 Bananas
-                            </strong>
+                            </option>
 
-                            <small>
-                                75 KG • Ahmedabad
-                            </small>
+                            <option value="Potatoes">
+                                Potatoes
+                            </option>
 
-                        </div>
+                            <option value="Rice">
+                                Rice
+                            </option>
+
+                            <option value="Milk">
+                                Milk
+                            </option>
+
+                            <option value="Vegetables">
+                                Mixed Vegetables
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
 
                     </div>
 
-                    <div class="risk">
 
-                        <span class="risk-high">
-                            73%
-                        </span>
+                    <div class="form-group">
 
-                        <small>
-                            Waste Risk
-                        </small>
+                        <label>
+                            QUANTITY (KG)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="farmerQuantity"
+                            value="100"
+                            min="1"
+                            placeholder="Example: 100">
 
                     </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            SHELF LIFE (DAYS)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="farmerShelfLife"
+                            value="2"
+                            min="1"
+                            placeholder="Example: 3">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            EXPECTED PRICE (₹/KG)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="farmerPrice"
+                            value="30"
+                            min="0"
+                            placeholder="Example: 30">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            LOCATION
+                        </label>
+
+                        <input
+                            type="text"
+                            id="farmerLocation"
+                            value="Ahmedabad"
+                            placeholder="Farm / City">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            HARVEST DATE
+                        </label>
+
+                        <input
+                            type="date"
+                            id="harvestDate">
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            ADDITIONAL INFORMATION
+                        </label>
+
+                        <textarea
+                            id="farmerNotes"
+                            placeholder="Describe the produce, quality, packaging, etc."></textarea>
+
+                    </div>
+
 
                 </div>
+
+
+                <button
+                    type="button"
+                    id="farmerAnalyzeButton"
+                    class="analyze-button">
+
+                    🤖 ANALYZE WITH FOODPULSE AI
+
+                </button>
+
+            </div>
+
+
+
+            <!-- AI PREVIEW -->
+
+            <div class="ai-preview">
+
+                <div class="ai-preview-header">
+
+                    <h2>
+                        🤖 FoodPulse Preview
+                    </h2>
+
+                    <span class="ai-preview-badge">
+                        AI ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="ai-preview-icon">
+                    🌱
+                </div>
+
+
+                <h3>
+                    Smart Food Rescue
+                </h3>
+
+
+                <p>
+                    FoodPulse evaluates multiple factors
+                    before recommending what should happen
+                    to your surplus food.
+                </p>
+
+
+                <div class="preview-item">
+
+                    <span>
+                        ⏱ Shelf Life
+                    </span>
+
+                    <strong>
+                        High Weight
+                    </strong>
+
+                </div>
+
+
+                <div class="preview-item">
+
+                    <span>
+                        📦 Quantity
+                    </span>
+
+                    <strong>
+                        Demand Impact
+                    </strong>
+
+                </div>
+
+
+                <div class="preview-item">
+
+                    <span>
+                        📍 Distance
+                    </span>
+
+                    <strong>
+                        Logistics
+                    </strong>
+
+                </div>
+
+
+                <div class="preview-item">
+
+                    <span>
+                        🏪 Market Demand
+                    </span>
+
+                    <strong>
+                        Matching
+                    </strong>
+
+                </div>
+
+
+                <div class="preview-item">
+
+                    <span>
+                        ❤️ NGO Need
+                    </span>
+
+                    <strong>
+                        Social Impact
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             EXISTING PRODUCE
+             ========================= -->
+
+        <section class="produce-list">
+
+            <div class="produce-list-header">
+
+                <div>
+
+                    <h2>
+                        📦 My Registered Produce
+                    </h2>
+
+                    <p>
+                        Current food inventory and AI risk status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <table class="produce-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            FOOD
+                        </th>
+
+                        <th>
+                            QUANTITY
+                        </th>
+
+                        <th>
+                            SHELF LIFE
+                        </th>
+
+                        <th>
+                            AI RISK
+                        </th>
+
+                        <th>
+                            RECOMMENDED ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td class="food-name">
+                            🍅 Tomatoes
+                        </td>
+
+                        <td>
+                            100 KG
+                        </td>
+
+                        <td>
+                            3 Days
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="risk-badge risk-high">
+
+                                87% HIGH
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            🏪 Market + NGO
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="food-name">
+                            🍌 Bananas
+                        </td>
+
+                        <td>
+                            75 KG
+                        </td>
+
+                        <td>
+                            2 Days
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="risk-badge risk-high">
+
+                                78% HIGH
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            🏷️ Discount Sale
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="food-name">
+                            🥔 Potatoes
+                        </td>
+
+                        <td>
+                            150 KG
+                        </td>
+
+                        <td>
+                            7 Days
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="risk-badge risk-medium">
+
+                                42% MEDIUM
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            🏪 Marketplace
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="food-name">
+                            🍚 Rice
+                        </td>
+
+                        <td>
+                            300 KG
+                        </td>
+
+                        <td>
+                            30 Days
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="risk-badge risk-low">
+
+                                12% LOW
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            📦 Normal Sale
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- =========================
+             IMPACT
+             ========================= -->
+
+        <section class="farmer-impact">
+
+            <h2>
+                🌱 Your Farm's Impact
+            </h2>
+
+            <p>
+                By redirecting surplus food instead of
+                allowing it to become waste, farmers can
+                recover value and reduce environmental impact.
+            </p>
+
+
+            <div class="impact-items">
+
+
+                <div class="impact-item">
+
+                    <span>
+                        ♻️
+                    </span>
+
+                    <strong>
+                        1,250 KG
+                    </strong>
+
+                    <small>
+                        Food Waste Prevented
+                    </small>
+
+                </div>
+
+
+                <div class="impact-item">
+
+                    <span>
+                        💰
+                    </span>
+
+                    <strong>
+                        ₹68,500
+                    </strong>
+
+                    <small>
+                        Value Recovered
+                    </small>
+
+                </div>
+
+
+                <div class="impact-item">
+
+                    <span>
+                        🌍
+                    </span>
+
+                    <strong>
+                        450 KG
+                    </strong>
+
+                    <small>
+                        Estimated CO₂ Impact Avoided
+                    </small>
+
+                </div>
+
 
             </div>
 
         </section>
 
 
-        <!-- ================= FOOTER ================= -->
 
-        <footer>
+        <!-- FOOTER -->
 
-            <p>
-                🌱 <strong>FoodLink AI</strong> —
-                Connecting Farm → Market → Consumer
-            </p>
+        <footer class="footer">
 
             <p>
-                © 2026 FoodLink AI Hackathon Project
+                🌱 FoodLink
+                <span>×</span>
+                🤖 FoodPulse AI
             </p>
+
+            <small>
+                Predict • Prevent • Redirect • Rescue
+            </small>
 
         </footer>
+
 
     </main>
 
 
-    <!-- JAVASCRIPT -->
 
-    <script src="script.js"></script>
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    
+
+    <script>
+
+        /* =====================================================
+           FOODLINK FARMER PAGE
+           REAL BACKEND + FOODPULSE AI INTEGRATION
+           ===================================================== */
+
+        const FARMER_API_URL = "http://localhost:5000/api";
+
+
+        /* =====================================================
+           SAFE NOTIFICATION
+           ===================================================== */
+
+        function farmerNotify(message) {
+
+            const old = document.getElementById("farmerNotification");
+
+            if (old) {
+                old.remove();
+            }
+
+            const box = document.createElement("div");
+
+            box.id = "farmerNotification";
+
+            box.textContent = message;
+
+            box.style.position = "fixed";
+            box.style.right = "24px";
+            box.style.bottom = "24px";
+            box.style.zIndex = "20000";
+            box.style.background = "#294f38";
+            box.style.color = "white";
+            box.style.padding = "13px 18px";
+            box.style.borderRadius = "12px";
+            box.style.fontSize = "12px";
+            box.style.fontWeight = "700";
+            box.style.boxShadow = "0 10px 30px rgba(0,0,0,.2)";
+
+            document.body.appendChild(box);
+
+            setTimeout(() => {
+                if (box.parentNode) {
+                    box.remove();
+                }
+            }, 3000);
+        }
+
+
+        /* =====================================================
+           API REQUEST
+           ===================================================== */
+
+        async function farmerApi(endpoint, options = {}) {
+
+            const response = await fetch(
+                FARMER_API_URL + endpoint,
+                {
+                    ...options,
+                    headers: {
+                        "Content-Type": "application/json",
+                        ...(options.headers || {})
+                    }
+                }
+            );
+
+            let data = {};
+
+            try {
+                data = await response.json();
+            } catch (_) {
+                data = {};
+            }
+
+            if (!response.ok) {
+                throw new Error(
+                    data.message ||
+                    `Server error: ${response.status}`
+                );
+            }
+
+            return data;
+        }
+
+
+        /* =====================================================
+           FOOD CATEGORY + UNIT
+           ===================================================== */
+
+        function getFoodCategory(food) {
+
+            const value = food.toLowerCase();
+
+            if (value === "milk") {
+                return "dairy";
+            }
+
+            if (value === "rice") {
+                return "grain";
+            }
+
+            if (value === "tomatoes") {
+                return "vegetable";
+            }
+
+            if (value === "potatoes") {
+                return "vegetable";
+            }
+
+            if (value === "bananas") {
+                return "fruit";
+            }
+
+            if (value === "vegetables") {
+                return "vegetable";
+            }
+
+            return "other";
+        }
+
+
+        function getFoodUnit(food) {
+
+            return food.toLowerCase() === "milk"
+                ? "L"
+                : "KG";
+        }
+
+
+        /* =====================================================
+           RISK LEVEL
+           ===================================================== */
+
+        function getRiskLevel(risk) {
+
+            if (risk >= 90) {
+                return "CRITICAL";
+            }
+
+            if (risk >= 75) {
+                return "HIGH";
+            }
+
+            if (risk >= 50) {
+                return "MEDIUM";
+            }
+
+            return "LOW";
+        }
+
+
+        function getRiskClass(risk) {
+
+            if (risk >= 75) {
+                return "risk-high";
+            }
+
+            if (risk >= 50) {
+                return "risk-medium";
+            }
+
+            return "risk-low";
+        }
+
+
+        function getRecommendation(risk) {
+
+            if (risk >= 90) {
+                return "Immediate NGO rescue";
+            }
+
+            if (risk >= 75) {
+                return "Redirect to NGO or consumer";
+            }
+
+            if (risk >= 50) {
+                return "Offer consumer discount";
+            }
+
+            return "Keep in normal marketplace";
+        }
+
+
+        function getRiskIcon(risk) {
+
+            if (risk >= 90) {
+                return "🚨";
+            }
+
+            if (risk >= 75) {
+                return "⚠️";
+            }
+
+            if (risk >= 50) {
+                return "🟡";
+            }
+
+            return "✅";
+        }
+
+
+        /* =====================================================
+           MAIN FARMER ANALYSIS
+
+           IMPORTANT:
+           This function does NOT reload the page.
+           It sends the food to the backend and keeps
+           the result modal open until Continue is clicked.
+           ===================================================== */
+
+        async function analyzeFarmerProduce(event) {
+
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const foodElement =
+                document.getElementById("farmerFood");
+
+            const quantityElement =
+                document.getElementById("farmerQuantity");
+
+            const shelfLifeElement =
+                document.getElementById("farmerShelfLife");
+
+            const priceElement =
+                document.getElementById("farmerPrice");
+
+            const locationElement =
+                document.getElementById("farmerLocation");
+
+            const notesElement =
+                document.getElementById("farmerNotes");
+
+
+            if (!foodElement || !quantityElement || !shelfLifeElement) {
+
+                console.error("Farmer form elements are missing.");
+
+                farmerNotify("❌ Farmer form is incomplete.");
+
+                return false;
+            }
+
+
+            const food = foodElement.value;
+
+            const quantity =
+                Number(quantityElement.value);
+
+            const shelfLife =
+                Number(shelfLifeElement.value);
+
+            const price =
+                Number(priceElement.value || 0);
+
+            const location =
+                locationElement.value.trim();
+
+            const notes =
+                notesElement.value.trim();
+
+
+            /* -----------------------------
+               VALIDATION
+               ----------------------------- */
+
+            if (!quantity || quantity <= 0) {
+
+                farmerNotify("❌ Enter a valid quantity.");
+
+                return false;
+            }
+
+
+            if (!shelfLife || shelfLife <= 0) {
+
+                farmerNotify("❌ Enter a valid shelf life.");
+
+                return false;
+            }
+
+
+            if (price < 0) {
+
+                farmerNotify("❌ Enter a valid price.");
+
+                return false;
+            }
+
+
+            const category =
+                getFoodCategory(food);
+
+            const unit =
+                getFoodUnit(food);
+
+
+            /* -----------------------------
+               DISABLE BUTTON WHILE SENDING
+               ----------------------------- */
+
+            const button =
+                document.querySelector(".analyze-button");
+
+            const originalButtonText =
+                button ? button.innerHTML : "";
+
+
+            if (button) {
+
+                button.disabled = true;
+                button.innerHTML = "🤖 ANALYZING...";
+                button.style.opacity = "0.7";
+                button.style.cursor = "wait";
+            }
+
+
+            farmerNotify("🤖 FoodPulse AI is analyzing...");
+
+
+            try {
+
+                /* -----------------------------
+                   SEND TO REAL BACKEND
+                   ----------------------------- */
+
+                const response =
+                    await farmerApi("/foods", {
+
+                        method: "POST",
+
+                        body: JSON.stringify({
+
+                            name: food,
+
+                            category: category,
+
+                            quantity: quantity,
+
+                            unit: unit,
+
+                            shelfLife: shelfLife,
+
+                            price: price,
+
+                            originalPrice: price,
+
+                            source: location || "Farmer",
+
+                            notes: notes
+                        })
+                    });
+
+
+                if (!response.success || !response.food) {
+                    throw new Error("Backend did not return a food item.");
+                }
+
+
+                const savedFood = response.food;
+
+                const risk = Number(savedFood.risk || 0);
+
+                const level =
+                    getRiskLevel(risk);
+
+                const recommendation =
+                    getRecommendation(risk);
+
+
+                console.log("====================================");
+                console.log("🌾 FARMER FOOD REGISTERED");
+                console.log("Food:", savedFood.name);
+                console.log("Food ID:", savedFood.id);
+                console.log("Quantity:", savedFood.quantity, savedFood.unit);
+                console.log("Shelf life:", savedFood.shelfLife, "days");
+                console.log("FoodPulse risk:", risk + "%");
+                console.log("Risk level:", level);
+                console.log("Recommendation:", recommendation);
+                console.log("====================================");
+
+
+                /* -----------------------------
+                   UPDATE PREVIEW
+                   ----------------------------- */
+
+                updateFarmerPreview(savedFood);
+
+
+                /* -----------------------------
+                   ADD REAL FOOD TO TABLE
+                   ----------------------------- */
+
+                addFoodToFarmerTable(savedFood, recommendation);
+
+
+                /* -----------------------------
+                   SHOW RESULT
+                   ----------------------------- */
+
+                showFarmerResult(
+                    savedFood,
+                    risk,
+                    level,
+                    recommendation,
+                    location
+                );
+
+
+                return false;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "❌ FoodPulse farmer submission failed:",
+                    error
+                );
+
+                farmerNotify(
+                    "❌ " + error.message
+                );
+
+                return false;
+
+            }
+
+            finally {
+
+                if (button) {
+
+                    button.disabled = false;
+                    button.innerHTML = originalButtonText;
+                    button.style.opacity = "1";
+                    button.style.cursor = "pointer";
+                }
+            }
+        }
+
+
+        /* =====================================================
+           RESULT MODAL
+           ===================================================== */
+
+        function showFarmerResult(
+            food,
+            risk,
+            level,
+            recommendation,
+            location
+        ) {
+
+            const oldModal =
+                document.getElementById("farmerResultModal");
+
+            if (oldModal) {
+                oldModal.remove();
+            }
+
+
+            const unit =
+                food.unit || "KG";
+
+            const icon =
+                getRiskIcon(risk);
+
+            const modal =
+                document.createElement("div");
+
+            modal.id = "farmerResultModal";
+
+            modal.className = "farmer-modal";
+
+
+            /*
+             * IMPORTANT:
+             * There is NO setTimeout here.
+             * The modal cannot close automatically.
+             */
+
+            modal.innerHTML = `
+
+                <div class="farmer-modal-box">
+
+                    <div class="farmer-modal-icon">
+                        ${icon}
+                    </div>
+
+                    <h2>
+                        FoodPulse Analysis Complete
+                    </h2>
+
+                    <p>
+                        <strong>${escapeHtml(food.name)}</strong>
+                        — ${Number(food.quantity)} ${unit}
+                    </p>
+
+                    <div class="modal-risk">
+
+                        <strong>
+                            ${risk}%
+                        </strong>
+
+                        <span>
+                            ${level} WASTE RISK
+                        </span>
+
+                    </div>
+
+                    <div class="modal-action">
+
+                        <p>
+                            🤖 Recommended Action
+                        </p>
+
+                        <strong>
+                            ${escapeHtml(recommendation)}
+                        </strong>
+
+                    </div>
+
+                    <p>
+                        📍 ${escapeHtml(location || "Location not provided")}
+                        <br>
+                        ⏱ ${Number(food.shelfLife)} days shelf life
+                        <br>
+                        💰 ₹${Number(food.price || 0)}/${unit}
+                        <br>
+                        🆔 Food ID: ${food.id}
+                    </p>
+
+                    <button
+                        type="button"
+                        class="modal-close-button"
+                        id="farmerContinueButton">
+
+                        Continue
+
+                    </button>
+
+                </div>
+            `;
+
+
+            document.body.appendChild(modal);
+
+
+            /*
+             * Only this button closes the modal.
+             * Clicking the dark background does NOT close it.
+             */
+
+            document
+                .getElementById("farmerContinueButton")
+                .addEventListener("click", closeFarmerResult);
+        }
+
+
+        /* =====================================================
+           CLOSE RESULT
+           ===================================================== */
+
+        function closeFarmerResult() {
+
+            const modal =
+                document.getElementById("farmerResultModal");
+
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+
+        /* =====================================================
+           ADD REAL FOOD TO FARMER TABLE
+           ===================================================== */
+
+        function addFoodToFarmerTable(
+            food,
+            recommendation
+        ) {
+
+            const table =
+                document.querySelector(".produce-table tbody");
+
+            if (!table) {
+                return;
+            }
+
+
+            /* Prevent duplicate display of same backend ID. */
+
+            const existing =
+                table.querySelector(
+                    `[data-food-id="${food.id}"]`
+                );
+
+            if (existing) {
+                return;
+            }
+
+
+            const row =
+                document.createElement("tr");
+
+            row.dataset.foodId = food.id;
+
+
+            const emoji =
+                getFoodEmoji(food.name);
+
+            const risk =
+                Number(food.risk || 0);
+
+            const level =
+                getRiskLevel(risk);
+
+            const riskClass =
+                getRiskClass(risk);
+
+
+            row.innerHTML = `
+
+                <td class="food-name">
+                    ${emoji}
+                    ${escapeHtml(food.name)}
+                </td>
+
+                <td>
+                    ${Number(food.quantity)} ${food.unit || "KG"}
+                </td>
+
+                <td>
+                    ${Number(food.shelfLife)} Days
+                </td>
+
+                <td>
+                    <span class="risk-badge ${riskClass}">
+                        ${risk}% ${level}
+                    </span>
+                </td>
+
+                <td>
+                    🤖 ${escapeHtml(recommendation)}
+                </td>
+            `;
+
+
+            table.prepend(row);
+        }
+
+
+        /* =====================================================
+           EMOJI
+           ===================================================== */
+
+        function getFoodEmoji(name) {
+
+            const value =
+                String(name).toLowerCase();
+
+            if (value.includes("tomato")) {
+                return "🍅";
+            }
+
+            if (value.includes("banana")) {
+                return "🍌";
+            }
+
+            if (value.includes("potato")) {
+                return "🥔";
+            }
+
+            if (value.includes("rice")) {
+                return "🍚";
+            }
+
+            if (value.includes("milk")) {
+                return "🥛";
+            }
+
+            if (
+                value.includes("vegetable") ||
+                value.includes("vegetables")
+            ) {
+                return "🥬";
+            }
+
+            return "🌾";
+        }
+
+
+        /* =====================================================
+           UPDATE AI PREVIEW
+           ===================================================== */
+
+        function updateFarmerPreview(food) {
+
+            const preview =
+                document.querySelectorAll(".preview-item strong");
+
+            if (!preview.length) {
+                return;
+            }
+
+            const risk =
+                Number(food.risk || 0);
+
+            const level =
+                getRiskLevel(risk);
+
+            const recommendation =
+                getRecommendation(risk);
+
+
+            if (preview[0]) {
+                preview[0].textContent =
+                    `${food.shelfLife} Days`;
+            }
+
+            if (preview[1]) {
+                preview[1].textContent =
+                    `${food.quantity} ${food.unit}`;
+            }
+
+            if (preview[2]) {
+                preview[2].textContent =
+                    `${risk}% ${level}`;
+            }
+
+            if (preview[3]) {
+                preview[3].textContent =
+                    recommendation;
+            }
+
+            if (preview[4]) {
+                preview[4].textContent =
+                    risk >= 75
+                        ? "High Priority"
+                        : "Normal Priority";
+            }
+        }
+
+
+        /* =====================================================
+           HTML ESCAPING
+           ===================================================== */
+
+        function escapeHtml(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        /* =====================================================
+           MAKE FUNCTIONS AVAILABLE
+           ===================================================== */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const analyzeButton =
+                document.getElementById("farmerAnalyzeButton");
+
+            if (analyzeButton) {
+                analyzeButton.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    analyzeFarmerProduce(event);
+                });
+            }
+
+            console.log("🌾 Farmer FoodPulse connected");
+        });
+
+        window.analyzeFarmerProduce = analyzeFarmerProduce;
+        window.closeFarmerResult = closeFarmerResult;
+
+    </script>
 
 </body>
 

@@ -4,10 +4,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodLink | Marketplace</title>
 
-    <title>FoodLink AI | Marketplace</title>
-
+    <!-- SAME SHARED CSS AS INDEX -->
     <link rel="stylesheet" href="style.css">
+
+
+    <style>
+        /* =====================================================
+           MARKETPLACE-SPECIFIC STYLES
+           Keeps the Index theme, but gives Marketplace food
+           listings their own proper responsive card layout.
+           ===================================================== */
+
+        .marketplace-filters {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0 24px;
+            padding: 14px;
+            background: #f7faf8;
+            border: 1px solid #e4ebe6;
+            border-radius: 14px;
+        }
+
+        .marketplace-filters input,
+        .marketplace-filters select {
+            height: 42px;
+            border: 1px solid #dbe5de;
+            border-radius: 10px;
+            background: #fff;
+            color: #30483a;
+            padding: 0 13px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .marketplace-filters input {
+            flex: 1 1 240px;
+            min-width: 220px;
+        }
+
+        .marketplace-filters select {
+            min-width: 165px;
+        }
+
+        .marketplace-filters input:focus,
+        .marketplace-filters select:focus {
+            border-color: #76a77c;
+            box-shadow: 0 0 0 3px rgba(76, 135, 91, .10);
+        }
+
+        .marketplace-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .market-food-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border: 1px solid #e1e8e3;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(35, 65, 47, .05);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+
+        .market-food-card:hover {
+            transform: translateY(-3px);
+            border-color: #c9dccd;
+            box-shadow: 0 12px 28px rgba(35, 65, 47, .10);
+        }
+
+        .market-food-icon {
+            min-height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 62px;
+            border-bottom: 1px solid #edf1ee;
+        }
+
+        .market-food-info {
+            padding: 17px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .market-food-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .market-food-top h3 {
+            margin: 0;
+            color: #30483a;
+            font-size: 19px;
+            line-height: 1.2;
+        }
+
+        .market-food-top p {
+            margin: 6px 0 0;
+            color: #89958f;
+            font-size: 11px;
+        }
+
+        .market-risk {
+            flex: 0 0 auto;
+            border-radius: 20px;
+            padding: 7px 9px;
+            font-size: 9px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .market-food-details {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .market-food-details > div {
+            background: #f7faf8;
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 0;
+        }
+
+        .market-food-details small {
+            display: block;
+            color: #8b968f;
+            font-size: 8px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .market-food-details strong {
+            display: block;
+            color: #30483a;
+            font-size: 11px;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .market-food-bottom {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid #edf1ee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .market-food-bottom > span {
+            color: #5e7465;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .market-food-bottom .small-button {
+            flex: 0 0 auto;
+            border: 0;
+            border-radius: 9px;
+            background: #e8f2e9;
+            color: #34734c;
+            padding: 10px 13px;
+            font-size: 10px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .market-food-bottom .small-button:hover {
+            background: #dcebdd;
+        }
+
+        .marketplace-message {
+            grid-column: 1 / -1;
+            min-height: 180px;
+            border: 1px dashed #cddbd0;
+            border-radius: 16px;
+            background: #f8fbf9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            color: #6e7e74;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .marketplace-message strong {
+            color: #30483a;
+            font-size: 15px;
+        }
+
+        .marketplace-message span {
+            font-size: 11px;
+        }
+
+        /* Prevent the Marketplace from creating horizontal overflow. */
+        .main-content {
+            min-width: 0;
+            overflow-x: hidden;
+        }
+
+        .dashboard-card {
+            min-width: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .marketplace-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+            .marketplace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .market-food-details {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .marketplace-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .marketplace-filters input,
+            .marketplace-filters select,
+            .marketplace-filters .small-button {
+                width: 100%;
+            }
+
+            .market-food-top {
+                flex-direction: column;
+            }
+
+            .market-risk {
+                align-self: flex-start;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -16,73 +271,99 @@
 
     <aside class="sidebar">
 
-        <div class="logo">
-            🌱 <span>FoodLink</span> AI
+        <div class="brand">
+            <div class="brand-icon">🌱</div>
+
+            <div>
+                <h1>FoodLink</h1>
+                <span>FoodPulse AI</span>
+            </div>
         </div>
 
-        <nav>
+        <nav class="sidebar-nav">
 
-            <a href="index.html" class="nav-link">
-                🏠 <span>Dashboard</span>
+            <a href="index.html" class="nav-item">
+                <span>🏠</span>
+                <span>Dashboard</span>
             </a>
 
-            <a href="farmer.html" class="nav-link">
-                👨‍🌾 <span>Farmer</span>
+            <a href="farmer.html" class="nav-item">
+                <span>🌾</span>
+                <span>Farmer</span>
             </a>
 
-            <a href="marketplace.html" class="nav-link active">
-                🛒 <span>Marketplace</span>
+            <a href="marketplace.html" class="nav-item active">
+                <span>🏪</span>
+                <span>Marketplace</span>
             </a>
 
-            <a href="ai.html" class="nav-link">
-                🤖 <span>AI Prediction</span>
+            <a href="ai.html" class="nav-item">
+                <span>🤖</span>
+                <span>FoodPulse AI</span>
             </a>
 
-            <a href="ngo.html" class="nav-link">
-                🤝 <span>NGO</span>
+            <a href="consumer.html" class="nav-item">
+                <span>👤</span>
+                <span>Consumer</span>
             </a>
 
-            <a href="analytics.html" class="nav-link">
-                📊 <span>Analytics</span>
+            <a href="ngo.html" class="nav-item">
+                <span>❤️</span>
+                <span>NGO</span>
+            </a>
+
+            <a href="volunteer.html" class="nav-item">
+                <span>🙋</span>
+                <span>Volunteer</span>
+            </a>
+
+            <a href="tracking.html" class="nav-item">
+                <span>🚚</span>
+                <span>Tracking</span>
+            </a>
+
+            <a href="analytics.html" class="nav-item">
+                <span>📊</span>
+                <span>Analytics</span>
             </a>
 
         </nav>
 
-        <div class="sidebar-bottom">
-            <p>🌍 Reducing Food Waste</p>
-            <small>Farm → Market → Consumer</small>
+        <div class="ai-status">
+
+            <div class="status-dot"></div>
+
+            <div>
+                <strong>FoodPulse AI</strong>
+                <small>System Active</small>
+            </div>
+
         </div>
 
     </aside>
 
 
-    <!-- ================= MAIN CONTENT ================= -->
+    <!-- ================= MAIN ================= -->
 
     <main class="main-content">
 
-        <!-- TOP BAR -->
+        <!-- ================= HEADER ================= -->
 
-        <header class="topbar">
+        <header class="top-header">
 
             <div>
-                <h1>Food Marketplace</h1>
+
+                <h2>FoodLink Marketplace</h2>
 
                 <p>
-                    Find fresh surplus food before it becomes waste
+                    Powered by FoodPulse AI —
+                    Predict. Prevent. Redirect. Rescue.
                 </p>
+
             </div>
 
-            <div class="user-profile">
-
-                <div class="avatar">
-                    BY
-                </div>
-
-                <div>
-                    <strong>Buyer</strong>
-                    <small>Marketplace User</small>
-                </div>
-
+            <div class="system-badge">
+                🟢 AI Marketplace Active
             </div>
 
         </header>
@@ -90,132 +371,56 @@
 
         <!-- ================= WELCOME ================= -->
 
-        <section class="welcome">
+        <section class="welcome-card">
 
             <div>
 
-                <h2>Save food. Save money. 🌱</h2>
+                <h2>
+                    Smart Food Marketplace 🏪
+                </h2>
 
                 <p>
-                    Discover surplus food from local farmers,
-                    retailers and suppliers at better prices.
+                    Discover surplus food registered by farmers
+                    and redirect it to consumers, businesses and NGOs
+                    before it becomes waste.
                 </p>
 
             </div>
 
-            <button
-                class="primary-button"
-                onclick="showAllFood()"
-            >
-                🔍 Find Food
-            </button>
+            <div class="welcome-ai">
+                🤖
 
-        </section>
-
-
-        <!-- ================= SEARCH ================= -->
-
-        <section class="dashboard-card marketplace-search">
-
-            <div class="search-container">
-
-                <input
-                    type="text"
-                    id="foodSearch"
-                    placeholder="🔍 Search for tomatoes, rice, bananas..."
-                >
-
-                <select id="categoryFilter">
-
-                    <option value="all">
-                        All Categories
-                    </option>
-
-                    <option value="vegetables">
-                        Vegetables
-                    </option>
-
-                    <option value="fruits">
-                        Fruits
-                    </option>
-
-                    <option value="grains">
-                        Grains
-                    </option>
-
-                    <option value="dairy">
-                        Dairy
-                    </option>
-
-                </select>
-
-                <button
-                    class="search-button"
-                    onclick="searchFood()"
-                >
-                    Search
-                </button>
+                <span>
+                    FoodPulse AI
+                    <small>Active</small>
+                </span>
 
             </div>
 
         </section>
 
 
-        <!-- ================= MARKETPLACE STATS ================= -->
+        <!-- ================= STATISTICS ================= -->
 
         <section class="stats-grid">
 
             <div class="stat-card">
 
                 <div class="stat-icon green">
-                    🥬
+                    🌱
                 </div>
 
                 <div>
 
-                    <p>Available Food</p>
+                    <p>Food Available</p>
 
-                    <h2>42</h2>
+                    <h3 id="foodAvailable">
+                        0 KG
+                    </h3>
 
-                    <small>Active listings</small>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    💰
-                </div>
-
-                <div>
-
-                    <p>Average Discount</p>
-
-                    <h2>28%</h2>
-
-                    <small>Compared to market price</small>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    📍
-                </div>
-
-                <div>
-
-                    <p>Nearby Sellers</p>
-
-                    <h2>18</h2>
-
-                    <small>Within 25 KM</small>
+                    <span class="positive">
+                        Live marketplace
+                    </span>
 
                 </div>
 
@@ -230,11 +435,61 @@
 
                 <div>
 
-                    <p>Urgent Food</p>
+                    <p>Food At Risk</p>
 
-                    <h2>9</h2>
+                    <h3 id="foodAtRisk">
+                        0 KG
+                    </h3>
 
-                    <small>Needs quick action</small>
+                    <span class="danger-text">
+                        Needs attention
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    💰
+                </div>
+
+                <div>
+
+                    <p>Market Value</p>
+
+                    <h3 id="marketValue">
+                        ₹0
+                    </h3>
+
+                    <span class="positive">
+                        Available value
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    🛒
+                </div>
+
+                <div>
+
+                    <p>Active Listings</p>
+
+                    <h3 id="activeListings">
+                        0
+                    </h3>
+
+                    <span class="positive">
+                        From farmers
+                    </span>
 
                 </div>
 
@@ -243,355 +498,114 @@
         </section>
 
 
-        <!-- ================= FOOD LISTINGS ================= -->
+        <!-- ================= MARKETPLACE ================= -->
 
         <section class="dashboard-card">
 
-            <div class="card-header">
+            <div class="section-header">
 
                 <div>
 
-                    <h3>🛒 Available Food</h3>
+                    <h2>
+                        🏪 Available Food
+                    </h2>
 
                     <p>
-                        Surplus food available from verified sellers
+                        Real food received from the FoodLink backend
                     </p>
 
                 </div>
 
-                <span class="ai-status">
-                    LIVE LISTINGS
+                <span class="view-link">
+                    🤖 AI Prioritized
                 </span>
 
             </div>
 
 
+            <!-- FILTERS -->
+
+            <div class="marketplace-filters">
+
+                <input
+                    id="foodSearch"
+                    type="text"
+                    placeholder="Search food..."
+                >
+
+                <select id="foodCategory">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="vegetable">
+                        Vegetables
+                    </option>
+
+                    <option value="fruit">
+                        Fruits
+                    </option>
+
+                    <option value="grain">
+                        Grains
+                    </option>
+
+                    <option value="dairy">
+                        Dairy
+                    </option>
+
+                </select>
+
+
+                <select id="foodUrgency">
+
+                    <option value="all">
+                        All Risk Levels
+                    </option>
+
+                    <option value="critical">
+                        Critical
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    class="small-button"
+                    id="resetFilters">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+
+            <!-- FOOD GRID -->
+
             <div
-                class="marketplace-grid"
-                id="marketplaceGrid"
-            >
-
-
-                <!-- TOMATO -->
+                id="marketGrid"
+                class="marketplace-grid">
 
                 <div
-                    class="market-card"
-                    data-name="tomatoes"
-                    data-category="vegetables"
-                >
+                    id="marketLoading"
+                    class="marketplace-message">
 
-                    <div class="market-image tomato-large">
-                        🍅
-                    </div>
-
-                    <div class="market-content">
-
-                        <div class="market-title">
-
-                            <div>
-                                <h3>Fresh Tomatoes</h3>
-
-                                <small>
-                                    👨‍🌾 Local Farmer
-                                </small>
-                            </div>
-
-                            <span class="discount">
-                                -30%
-                            </span>
-
-                        </div>
-
-
-                        <div class="market-details">
-
-                            <span>
-                                📦 100 KG
-                            </span>
-
-                            <span>
-                                📍 Ahmedabad
-                            </span>
-
-                            <span>
-                                ⏳ 3 days
-                            </span>
-
-                        </div>
-
-
-                        <div class="price-section">
-
-                            <div>
-
-                                <span class="old-price">
-                                    ₹45/kg
-                                </span>
-
-                                <strong>
-                                    ₹30/kg
-                                </strong>
-
-                            </div>
-
-                            <span class="risk-high">
-                                87% Risk
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            class="buy-button"
-                            onclick="requestFood('Fresh Tomatoes', 100, 30)"
-                        >
-                            Request Food
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- BANANA -->
-
-                <div
-                    class="market-card"
-                    data-name="bananas"
-                    data-category="fruits"
-                >
-
-                    <div class="market-image banana-large">
-                        🍌
-                    </div>
-
-                    <div class="market-content">
-
-                        <div class="market-title">
-
-                            <div>
-                                <h3>Fresh Bananas</h3>
-
-                                <small>
-                                    👨‍🌾 Local Farmer
-                                </small>
-                            </div>
-
-                            <span class="discount">
-                                -25%
-                            </span>
-
-                        </div>
-
-
-                        <div class="market-details">
-
-                            <span>
-                                📦 75 KG
-                            </span>
-
-                            <span>
-                                📍 Ahmedabad
-                            </span>
-
-                            <span>
-                                ⏳ 2 days
-                            </span>
-
-                        </div>
-
-
-                        <div class="price-section">
-
-                            <div>
-
-                                <span class="old-price">
-                                    ₹40/kg
-                                </span>
-
-                                <strong>
-                                    ₹30/kg
-                                </strong>
-
-                            </div>
-
-                            <span class="risk-high">
-                                73% Risk
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            class="buy-button"
-                            onclick="requestFood('Fresh Bananas', 75, 30)"
-                        >
-                            Request Food
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- POTATO -->
-
-                <div
-                    class="market-card"
-                    data-name="potatoes"
-                    data-category="vegetables"
-                >
-
-                    <div class="market-image potato-large">
-                        🥔
-                    </div>
-
-                    <div class="market-content">
-
-                        <div class="market-title">
-
-                            <div>
-                                <h3>Fresh Potatoes</h3>
-
-                                <small>
-                                    👨‍🌾 Local Farmer
-                                </small>
-                            </div>
-
-                            <span class="discount">
-                                -15%
-                            </span>
-
-                        </div>
-
-
-                        <div class="market-details">
-
-                            <span>
-                                📦 150 KG
-                            </span>
-
-                            <span>
-                                📍 Ahmedabad
-                            </span>
-
-                            <span>
-                                ⏳ 7 days
-                            </span>
-
-                        </div>
-
-
-                        <div class="price-section">
-
-                            <div>
-
-                                <span class="old-price">
-                                    ₹35/kg
-                                </span>
-
-                                <strong>
-                                    ₹30/kg
-                                </strong>
-
-                            </div>
-
-                            <span class="risk-medium">
-                                42% Risk
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            class="buy-button"
-                            onclick="requestFood('Fresh Potatoes', 150, 30)"
-                        >
-                            Request Food
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- RICE -->
-
-                <div
-                    class="market-card"
-                    data-name="rice"
-                    data-category="grains"
-                >
-
-                    <div class="market-image rice-large">
-                        🍚
-                    </div>
-
-                    <div class="market-content">
-
-                        <div class="market-title">
-
-                            <div>
-                                <h3>Premium Rice</h3>
-
-                                <small>
-                                    🏪 Local Supplier
-                                </small>
-                            </div>
-
-                            <span class="discount">
-                                -10%
-                            </span>
-
-                        </div>
-
-
-                        <div class="market-details">
-
-                            <span>
-                                📦 300 KG
-                            </span>
-
-                            <span>
-                                📍 Ahmedabad
-                            </span>
-
-                            <span>
-                                ⏳ 30 days
-                            </span>
-
-                        </div>
-
-
-                        <div class="price-section">
-
-                            <div>
-
-                                <span class="old-price">
-                                    ₹55/kg
-                                </span>
-
-                                <strong>
-                                    ₹49/kg
-                                </strong>
-
-                            </div>
-
-                            <span class="risk-low">
-                                15% Risk
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            class="buy-button"
-                            onclick="requestFood('Premium Rice', 300, 49)"
-                        >
-                            Request Food
-                        </button>
-
-                    </div>
+                    🤖 Loading FoodPulse marketplace...
 
                 </div>
 
@@ -600,56 +614,230 @@
         </section>
 
 
-        <!-- ================= SMART MATCHING ================= -->
+        <!-- ================= AI EXPLANATION ================= -->
 
-        <section class="dashboard-card smart-match">
+        <section class="ai-recommendation-card">
 
-            <div class="card-header">
+            <div class="ai-card-header">
 
-                <div>
+                <div class="ai-title">
 
-                    <h3>🤖 AI Smart Matching</h3>
+                    <div class="ai-icon">
+                        🤖
+                    </div>
 
-                    <p>
-                        FoodLink AI recommends the best food
-                        based on your location and needs
-                    </p>
+                    <div>
+
+                        <h2>
+                            FoodPulse AI Marketplace
+                        </h2>
+
+                        <p>
+                            AI helps prioritize food that needs
+                            the fastest rescue.
+                        </p>
+
+                    </div>
 
                 </div>
 
-                <span class="ai-status">
+                <span class="ai-badge">
                     AI ACTIVE
                 </span>
 
             </div>
 
 
-            <div class="match-result">
+            <div class="ai-analysis">
 
-                <div class="match-icon">
-                    🎯
+                <div class="ai-food">
+
+                    <span class="big-food-icon">
+                        🧠
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Smart Food Matching
+                        </h3>
+
+                        <p>
+                            FoodPulse considers:
+                        </p>
+
+                        <strong>
+                            Shelf Life + Quantity + Risk
+                        </strong>
+
+                    </div>
+
                 </div>
+
+
+                <div class="ai-reasons">
+
+                    <h3>
+                        Marketplace Priorities
+                    </h3>
+
+                    <div class="reason">
+                        ✓ Short shelf life → higher priority
+                    </div>
+
+                    <div class="reason">
+                        ✓ High waste risk → faster rescue
+                    </div>
+
+                    <div class="reason">
+                        ✓ Nearby food → easier redistribution
+                    </div>
+
+                    <div class="reason">
+                        ✓ Farmer surplus → direct marketplace listing
+                    </div>
+
+                </div>
+
+
+                <div class="ai-plan">
+
+                    <h3>
+                        Recommended Action
+                    </h3>
+
+                    <div class="plan-row">
+                        <span>🏪 Consumer</span>
+                        <strong>Buy</strong>
+                    </div>
+
+                    <div class="plan-row">
+                        <span>❤️ NGO</span>
+                        <strong>Rescue</strong>
+                    </div>
+
+                    <div class="plan-row">
+                        <span>🚚 Volunteer</span>
+                        <strong>Deliver</strong>
+                    </div>
+
+                    <div class="plan-row">
+                        <span>♻️ FoodLink</span>
+                        <strong>Redirect</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="section-header">
 
                 <div>
 
-                    <strong>
-                        Best Match Found
-                    </strong>
+                    <h2>
+                        ⚡ Quick Actions
+                    </h2>
 
                     <p>
-                        Fresh Tomatoes are highly suitable
-                        for your location and have an 87%
-                        waste risk.
+                        Continue managing FoodLink
                     </p>
 
                 </div>
 
-                <button
-                    class="secondary-button match-button"
-                    onclick="requestFood('Fresh Tomatoes', 100, 30)"
-                >
-                    View Match
-                </button>
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a
+                    href="farmer.html"
+                    class="quick-action">
+
+                    <span>🌾</span>
+
+                    <div>
+
+                        <strong>
+                            Add Produce
+                        </strong>
+
+                        <small>
+                            Register new food
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="consumer.html"
+                    class="quick-action">
+
+                    <span>👤</span>
+
+                    <div>
+
+                        <strong>
+                            Consumer
+                        </strong>
+
+                        <small>
+                            Buy surplus food
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="ngo.html"
+                    class="quick-action">
+
+                    <span>❤️</span>
+
+                    <div>
+
+                        <strong>
+                            Rescue Food
+                        </strong>
+
+                        <small>
+                            Connect with NGOs
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="tracking.html"
+                    class="quick-action">
+
+                    <span>🚚</span>
+
+                    <div>
+
+                        <strong>
+                            Track Delivery
+                        </strong>
+
+                        <small>
+                            Monitor food movement
+                        </small>
+
+                    </div>
+
+                </a>
 
             </div>
 
@@ -658,26 +846,1233 @@
 
         <!-- ================= FOOTER ================= -->
 
-        <footer>
+        <footer class="footer">
 
             <p>
-                🌱 <strong>FoodLink AI</strong> —
-                Connecting Farm → Market → Consumer
+                🌱 FoodLink
+                <span>×</span>
+                🤖 FoodPulse AI
             </p>
 
-            <p>
-                © 2026 FoodLink AI Hackathon Project
-            </p>
+            <small>
+                Predict • Prevent • Redirect • Rescue
+            </small>
 
         </footer>
 
     </main>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- ================= JAVASCRIPT ================= -->
 
-    <script src="script.js"></script>
+    <script>
+
+        "use strict";
+
+
+        const FOODLINK_API =
+            "http://localhost:5000/api";
+
+
+        /* ================= HELPERS ================= */
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+        function getFoodEmoji(name) {
+
+            const food =
+                String(name || "")
+                    .toLowerCase();
+
+            if (food.includes("tomato"))
+                return "🍅";
+
+            if (food.includes("banana"))
+                return "🍌";
+
+            if (food.includes("potato"))
+                return "🥔";
+
+            if (food.includes("rice"))
+                return "🍚";
+
+            if (food.includes("milk"))
+                return "🥛";
+
+            if (food.includes("vegetable"))
+                return "🥬";
+
+            return "📦";
+
+        }
+
+
+        function getUnit(food) {
+
+            if (food.unit) {
+                return food.unit;
+            }
+
+            const name =
+                String(food.name || "")
+                    .toLowerCase();
+
+            return name.includes("milk")
+                ? "L"
+                : "KG";
+
+        }
+
+
+        function getCategory(food) {
+
+            const category =
+                String(food.category || "")
+                    .toLowerCase();
+
+            if (category.includes("veget"))
+                return "vegetable";
+
+            if (category.includes("fruit"))
+                return "fruit";
+
+            if (category.includes("grain"))
+                return "grain";
+
+            if (category.includes("dairy"))
+                return "dairy";
+
+
+            const name =
+                String(food.name || "")
+                    .toLowerCase();
+
+
+            if (
+                name.includes("tomato") ||
+                name.includes("potato") ||
+                name.includes("vegetable")
+            ) {
+                return "vegetable";
+            }
+
+
+            if (
+                name.includes("banana") ||
+                name.includes("apple") ||
+                name.includes("fruit")
+            ) {
+                return "fruit";
+            }
+
+
+            if (
+                name.includes("rice") ||
+                name.includes("wheat") ||
+                name.includes("grain")
+            ) {
+                return "grain";
+            }
+
+
+            if (
+                name.includes("milk") ||
+                name.includes("dairy")
+            ) {
+                return "dairy";
+            }
+
+
+            return "all";
+
+        }
+
+
+        function getRiskLevel(risk) {
+
+            risk = Number(risk || 0);
+
+            if (risk >= 90)
+                return "critical";
+
+            if (risk >= 75)
+                return "high";
+
+            if (risk >= 50)
+                return "medium";
+
+            return "low";
+
+        }
+
+
+        function getRiskColor(risk) {
+
+            risk = Number(risk || 0);
+
+            if (risk >= 90)
+                return "#d9534f";
+
+            if (risk >= 75)
+                return "#e09a3e";
+
+            if (risk >= 50)
+                return "#c7a039";
+
+            return "#4f9c62";
+
+        }
+
+
+        function getPriorityText(risk) {
+
+            risk = Number(risk || 0);
+
+            if (risk >= 90)
+                return "🔥 CRITICAL";
+
+            if (risk >= 75)
+                return "⚡ HIGH";
+
+            if (risk >= 50)
+                return "⚠ MEDIUM";
+
+            return "✓ LOW";
+
+        }
+
+
+        function getRecommendation(risk) {
+
+            risk = Number(risk || 0);
+
+            if (risk >= 90)
+                return "Immediate Rescue";
+
+            if (risk >= 75)
+                return "Discount / Rescue";
+
+            if (risk >= 50)
+                return "Priority Sale";
+
+            return "Normal Sale";
+
+        }
+
+
+        /* ================= FOOD CARD ================= */
+
+        function createFoodCard(food) {
+
+            const risk =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Math.round(
+                            Number(food.risk ?? 0)
+                        )
+                    )
+                );
+
+
+            const unit =
+                getUnit(food);
+
+
+            const quantity =
+                `${food.quantity ?? 0} ${unit}`;
+
+
+            const shelfLife =
+                `${food.shelfLife ?? "—"} days left`;
+
+
+            const price =
+                `₹${food.price ?? 0}/${unit}`;
+
+
+            const location =
+                food.location ||
+                food.source ||
+                "Farmer";
+
+
+            const riskColor =
+                getRiskColor(risk);
+
+
+            const recommendation =
+                food.recommendation ||
+                getRecommendation(risk);
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "market-food-card";
+
+
+            card.dataset.name =
+                String(food.name || "")
+                    .toLowerCase();
+
+
+            card.dataset.category =
+                getCategory(food);
+
+
+            card.dataset.risk =
+                getRiskLevel(risk);
+
+
+            card.innerHTML = `
+
+                <div
+                    class="market-food-icon"
+                    style="
+                        background:#f0f7f1;
+                    "
+                >
+                    ${getFoodEmoji(food.name)}
+                </div>
+
+
+                <div class="market-food-info">
+
+                    <div
+                        class="market-food-top"
+                    >
+
+                        <div>
+
+                            <h3>
+                                ${escapeHTML(
+                                    food.name
+                                )}
+                            </h3>
+
+                            <p>
+                                📍
+                                ${escapeHTML(
+                                    location
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            class="market-risk"
+                            style="
+                                color:${riskColor};
+                                background:#f5f8f5;
+                            "
+                        >
+                            ${risk}% ${getPriorityText(risk)}
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="market-food-details"
+                    >
+
+                        <div>
+
+                            <small>
+                                QUANTITY
+                            </small>
+
+                            <strong>
+                                ${escapeHTML(
+                                    quantity
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                SHELF LIFE
+                            </small>
+
+                            <strong>
+                                ${escapeHTML(
+                                    shelfLife
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                PRICE
+                            </small>
+
+                            <strong>
+                                ${escapeHTML(
+                                    price
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="market-food-bottom"
+                    >
+
+                        <span>
+                            🤖
+                            ${escapeHTML(
+                                recommendation
+                            )}
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="small-button"
+                        >
+                            ${
+                                risk >= 75
+                                    ? "❤️ Rescue"
+                                    : "🛒 Claim"
+                            }
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            const button =
+                card.querySelector(
+                    ".small-button"
+                );
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    openClaimModal(
+                        food
+                    );
+
+                }
+            );
+
+
+            return card;
+
+        }
+
+
+        /* ================= LOAD FOOD ================= */
+
+        async function loadMarketplace() {
+
+            const grid =
+                document.getElementById(
+                    "marketGrid"
+                );
+
+
+            const loading =
+                document.getElementById(
+                    "marketLoading"
+                );
+
+
+            try {
+
+                console.log(
+                    "🏪 Loading Farmer food..."
+                );
+
+
+                const response =
+                    await fetch(
+                        `${FOODLINK_API}/foods`
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        `HTTP ${response.status}`
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                const foods =
+                    Array.isArray(data)
+                        ? data
+                        : (
+                            data.foods ||
+                            data.data?.foods ||
+                            []
+                        );
+
+
+                console.log(
+                    "✅ Marketplace foods:",
+                    foods
+                );
+
+
+                if (loading) {
+                    loading.remove();
+                }
+
+
+                grid.innerHTML = "";
+
+
+                if (foods.length === 0) {
+
+                    grid.innerHTML = `
+
+                        <div
+                            class="marketplace-message"
+                        >
+
+                            🥕
+                            <strong>
+                                No food available yet
+                            </strong>
+
+                            <span>
+                                Add surplus food from
+                                the Farmer page.
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    updateStats([]);
+
+                    return;
+
+                }
+
+
+                /* ========================================
+                   REMOVE DUPLICATE MARKETPLACE LISTINGS
+                   ======================================== */
+
+                const seenFood = new Set();
+
+                const uniqueFoods = foods.filter(
+                    function(food) {
+
+                        const name =
+                            String(food.name || "")
+                                .trim()
+                                .toLowerCase();
+
+                        const quantity =
+                            Number(food.quantity || 0);
+
+                        const unit =
+                            String(getUnit(food) || "")
+                                .trim()
+                                .toUpperCase();
+
+                        const shelfLife =
+                            Number(food.shelfLife || 0);
+
+                        const price =
+                            Number(food.price || 0);
+
+                        const location =
+                            String(
+                                food.location ||
+                                food.source ||
+                                ""
+                            )
+                            .trim()
+                            .toLowerCase();
+
+                        /*
+                           Category is intentionally NOT included.
+                           Example: Tomatoes may exist once as
+                           "tomatoes" and once as "vegetable" in
+                           the database. They are still the same
+                           marketplace listing when all the actual
+                           food details match.
+                        */
+                        const key = [
+                            name,
+                            quantity,
+                            unit,
+                            shelfLife,
+                            price,
+                            location
+                        ].join("|");
+
+                        if (seenFood.has(key)) {
+
+                            console.log(
+                                "♻️ Duplicate food removed:",
+                                food.name,
+                                "ID:",
+                                food.id
+                            );
+
+                            return false;
+                        }
+
+                        seenFood.add(key);
+                        return true;
+
+                    }
+                );
+
+
+                console.log(
+                    `🏪 Marketplace: ${foods.length} API records → ${uniqueFoods.length} unique listings`
+                );
+
+
+                /* ========================================
+                   RENDER UNIQUE FOOD ONLY
+                   ======================================== */
+
+                uniqueFoods.forEach(
+                    function(food) {
+
+                        grid.appendChild(
+                            createFoodCard(
+                                food
+                            )
+                        );
+
+                    }
+                );
+
+
+                updateStats(
+                    uniqueFoods
+                );
+
+
+                filterFood();
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "❌ Marketplace error:",
+                    error
+                );
+
+
+                if (loading) {
+                    loading.remove();
+                }
+
+
+                grid.innerHTML = `
+
+                    <div
+                        class="marketplace-message"
+                    >
+
+                        ⚠️
+
+                        <strong>
+                            Could not load food
+                        </strong>
+
+                        <span>
+                            Make sure the backend
+                            is running on port 5000.
+                        </span>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /* ================= STATS ================= */
+
+        function updateStats(foods) {
+
+            let available =
+                0;
+
+            let atRisk =
+                0;
+
+            let value =
+                0;
+
+
+            foods.forEach(
+                function(food) {
+
+                    const unit =
+                        String(
+                            getUnit(food)
+                        ).toUpperCase();
+
+
+                    const quantity =
+                        Number(
+                            food.quantity || 0
+                        );
+
+
+                    const price =
+                        Number(
+                            food.price || 0
+                        );
+
+
+                    const risk =
+                        Number(
+                            food.risk || 0
+                        );
+
+
+                    if (unit !== "L") {
+
+                        available += quantity;
+
+
+                        if (risk >= 75) {
+
+                            atRisk +=
+                                quantity;
+
+                        }
+
+                    }
+
+
+                    value +=
+                        quantity *
+                        price;
+
+                }
+            );
+
+
+            const availableEl =
+                document.getElementById(
+                    "foodAvailable"
+                );
+
+
+            const riskEl =
+                document.getElementById(
+                    "foodAtRisk"
+                );
+
+
+            const valueEl =
+                document.getElementById(
+                    "marketValue"
+                );
+
+
+            const listingsEl =
+                document.getElementById(
+                    "activeListings"
+                );
+
+
+            availableEl.textContent =
+                `${available} KG`;
+
+
+            riskEl.textContent =
+                `${atRisk} KG`;
+
+
+            valueEl.textContent =
+                `₹${value.toLocaleString("en-IN")}`;
+
+
+            listingsEl.textContent =
+                foods.length;
+
+        }
+
+
+        /* ================= FILTER ================= */
+
+        function filterFood() {
+
+            const search =
+                document.getElementById(
+                    "foodSearch"
+                );
+
+
+            const category =
+                document.getElementById(
+                    "foodCategory"
+                );
+
+
+            const urgency =
+                document.getElementById(
+                    "foodUrgency"
+                );
+
+
+            const searchValue =
+                search.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const categoryValue =
+                category.value;
+
+
+            const urgencyValue =
+                urgency.value;
+
+
+            const cards =
+                document.querySelectorAll(
+                    ".market-food-card"
+                );
+
+
+            cards.forEach(
+                function(card) {
+
+                    const name =
+                        card.dataset.name ||
+                        "";
+
+
+                    const cardCategory =
+                        card.dataset.category ||
+                        "";
+
+
+                    const cardRisk =
+                        card.dataset.risk ||
+                        "";
+
+
+                    const matchesSearch =
+                        name.includes(
+                            searchValue
+                        );
+
+
+                    const matchesCategory =
+                        categoryValue === "all" ||
+                        cardCategory ===
+                            categoryValue;
+
+
+                    const matchesRisk =
+                        urgencyValue === "all" ||
+                        cardRisk ===
+                            urgencyValue;
+
+
+                    card.style.display =
+                        (
+                            matchesSearch &&
+                            matchesCategory &&
+                            matchesRisk
+                        )
+                            ? "flex"
+                            : "none";
+
+                }
+            );
+
+        }
+
+
+        /* ================= CLAIM ================= */
+
+        function openClaimModal(food) {
+
+            closeClaimModal();
+
+
+            const modal =
+                document.createElement(
+                    "div"
+                );
+
+
+            modal.id =
+                "marketClaimModal";
+
+
+            modal.style.cssText = `
+
+                position:fixed;
+                inset:0;
+                background:rgba(20,45,32,.55);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                z-index:99999;
+                padding:20px;
+
+            `;
+
+
+            const unit =
+                getUnit(food);
+
+
+            modal.innerHTML = `
+
+                <div
+                    class="dashboard-card"
+                    style="
+                        width:min(450px,100%);
+                        padding:30px;
+                        text-align:center;
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size:45px;
+                            margin-bottom:10px;
+                        "
+                    >
+                        🛒
+                    </div>
+
+
+                    <h2>
+                        Claim Food
+                    </h2>
+
+
+                    <p
+                        style="
+                            margin:10px 0 20px;
+                        "
+                    >
+                        You're helping prevent
+                        surplus food from becoming waste.
+                    </p>
+
+
+                    <div
+                        style="
+                            background:#f5f8f5;
+                            padding:15px;
+                            border-radius:12px;
+                            text-align:left;
+                        "
+                    >
+
+                        <p>
+                            <strong>Food:</strong>
+                            ${escapeHTML(
+                                food.name
+                            )}
+                        </p>
+
+                        <p>
+                            <strong>Quantity:</strong>
+                            ${escapeHTML(
+                                `${food.quantity} ${unit}`
+                            )}
+                        </p>
+
+                        <p>
+                            <strong>Price:</strong>
+                            ₹${escapeHTML(
+                                food.price
+                            )}/${escapeHTML(
+                                unit
+                            )}
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            ${escapeHTML(
+                                food.location ||
+                                food.source ||
+                                "Farmer"
+                            )}
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="confirmClaim"
+                        style="
+                            margin-top:18px;
+                        "
+                    >
+                        ✓ Confirm Claim
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelClaim"
+                        style="
+                            margin-top:8px;
+                            width:100%;
+                        "
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            `;
+
+
+            document.body.appendChild(
+                modal
+            );
+
+
+            document
+                .getElementById(
+                    "confirmClaim"
+                )
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        closeClaimModal();
+
+                        showNotification(
+                            `✓ ${food.name} claimed successfully!`
+                        );
+
+                    }
+                );
+
+
+            document
+                .getElementById(
+                    "cancelClaim"
+                )
+                .addEventListener(
+                    "click",
+                    closeClaimModal
+                );
+
+        }
+
+
+        function closeClaimModal() {
+
+            const modal =
+                document.getElementById(
+                    "marketClaimModal"
+                );
+
+
+            if (modal) {
+                modal.remove();
+            }
+
+        }
+
+
+        function showNotification(
+            message
+        ) {
+
+            const old =
+                document.getElementById(
+                    "marketNotification"
+                );
+
+
+            if (old) {
+                old.remove();
+            }
+
+
+            const notification =
+                document.createElement(
+                    "div"
+                );
+
+
+            notification.id =
+                "marketNotification";
+
+
+            notification.textContent =
+                message;
+
+
+            notification.style.cssText = `
+
+                position:fixed;
+                right:25px;
+                bottom:25px;
+                z-index:100000;
+                background:#34734c;
+                color:white;
+                padding:14px 20px;
+                border-radius:10px;
+                font-weight:700;
+                box-shadow:
+                    0 10px 30px
+                    rgba(0,0,0,.2);
+
+            `;
+
+
+            document.body.appendChild(
+                notification
+            );
+
+
+            setTimeout(
+                function() {
+
+                    if (
+                        notification.isConnected
+                    ) {
+
+                        notification.remove();
+
+                    }
+
+                },
+                3000
+            );
+
+        }
+
+
+        /* ================= START ================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                console.log(
+                    "🏪 FOODLINK MARKETPLACE ACTIVE"
+                );
+
+
+                document
+                    .getElementById(
+                        "foodSearch"
+                    )
+                    .addEventListener(
+                        "input",
+                        filterFood
+                    );
+
+
+                document
+                    .getElementById(
+                        "foodCategory"
+                    )
+                    .addEventListener(
+                        "change",
+                        filterFood
+                    );
+
+
+                document
+                    .getElementById(
+                        "foodUrgency"
+                    )
+                    .addEventListener(
+                        "change",
+                        filterFood
+                    );
+
+
+                document
+                    .getElementById(
+                        "resetFilters"
+                    )
+                    .addEventListener(
+                        "click",
+                        function() {
+
+                            document
+                                .getElementById(
+                                    "foodSearch"
+                                )
+                                .value = "";
+
+                            document
+                                .getElementById(
+                                    "foodCategory"
+                                )
+                                .value = "all";
+
+                            document
+                                .getElementById(
+                                    "foodUrgency"
+                                )
+                                .value = "all";
+
+                            filterFood();
+
+                        }
+                    );
+
+
+                loadMarketplace();
+
+            }
+        );
+
+    </script>
 
 </body>
-
 </html>

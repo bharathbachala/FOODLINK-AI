@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "Fresh Tomatoes",
+    "category": "vegetable",
+    "quantity": 100,
+    "unit": "KG",
+    "shelfLife": 2,
+    "price": 25,
+    "originalPrice": 40,
+    "risk": 87,
+    "status": "available",
+    "source": "Farmer A"
+  },
+  {
+    "id": 2,
+    "name": "Fresh Milk",
+    "category": "dairy",
+    "quantity": 80,
+    "unit": "L",
+    "shelfLife": 1,
+    "price": 35,
+    "originalPrice": 50,
+    "risk": 94,
+    "status": "available",
+    "source": "Dairy Partner"
+  },
+  {
+    "id": 3,
+    "name": "Fresh Bananas",
+    "category": "fruit",
+    "quantity": 120,
+    "unit": "KG",
+    "shelfLife": 2,
+    "price": 35,
+    "originalPrice": 60,
+    "risk": 82,
+    "status": "available",
+    "source": "Farmer B"
+  },
+  {
+    "id": 4,
+    "name": "Mixed Vegetables",
+    "category": "vegetable",
+    "quantity": 120,
+    "unit": "KG",
+    "shelfLife": 3,
+    "price": 50,
+    "originalPrice": 80,
+    "risk": 76,
+    "status": "available",
+    "source": "Farmer E"
+  },
+  {
+    "id": 5,
+    "name": "Premium Rice",
+    "category": "grain",
+    "quantity": 200,
+    "unit": "KG",
+    "shelfLife": 30,
+    "price": 55,
+    "originalPrice": 70,
+    "risk": 25,
+    "status": "available",
+    "source": "Farmer D"
+  }
+]

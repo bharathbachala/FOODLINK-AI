@@ -1,708 +1,130 @@
-// ==========================================
-// FOODLINK AI - MAIN JAVASCRIPT
-// ==========================================
+// ======================================================
+// FOODLINK + FOODPULSE AI
+// MAIN FRONTEND SCRIPT
+// ======================================================
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    console.log("FoodLink AI Dashboard Loaded");
-
-
-    // ==========================================
-    // NAVIGATION
-    // ==========================================
-
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            navLinks.forEach(function (item) {
-                item.classList.remove("active");
-            });
-
-            this.classList.add("active");
-
-        });
-
-    });
+const API_URL = "http://localhost:5000/api";
 
 
-    // ==========================================
-    // AI PREDICTION DEMO
-    // ==========================================
+// ======================================================
+// API HELPER
+// ======================================================
 
-    const aiButton = document.querySelector(".primary-button");
+async function apiRequest(
+    endpoint,
+    options = {}
+) {
 
-    if (aiButton) {
+    try {
 
-        aiButton.addEventListener("click", function () {
-
-            console.log("Opening AI Prediction...");
-
-        });
-
-    }
-
-
-    // ==========================================
-    // FOOD RISK DATA
-    // ==========================================
-
-    const foodRiskData = [
-        {
-            name: "Tomatoes",
-            quantity: "100 KG",
-            shelfLife: "3 days",
-            risk: 87,
-            level: "High"
-        },
-
-        {
-            name: "Bananas",
-            quantity: "75 KG",
-            shelfLife: "2 days",
-            risk: 73,
-            level: "High"
-        },
-
-        {
-            name: "Potatoes",
-            quantity: "150 KG",
-            shelfLife: "7 days",
-            risk: 42,
-            level: "Medium"
-        },
-
-        {
-            name: "Rice",
-            quantity: "300 KG",
-            shelfLife: "30 days",
-            risk: 15,
-            level: "Low"
-        }
-    ];
-
-
-    // ==========================================
-    // DASHBOARD STATISTICS
-    // ==========================================
-
-    let foodSaved = 1250;
-    let wasteReduced = 980;
-    let activeListings = 42;
-    let foodAtRisk = 17;
-
-
-    function updateDashboard() {
-
-        console.log("Dashboard Statistics");
-
-        console.log("Food Saved:", foodSaved + " KG");
-
-        console.log("Waste Reduced:", wasteReduced + " KG");
-
-        console.log("Active Listings:", activeListings);
-
-        console.log("Food At Risk:", foodAtRisk);
-
-    }
-
-    updateDashboard();
-
-
-    // ==========================================
-    // FOOD RISK ANALYSIS
-    // ==========================================
-
-    function getRiskLevel(risk) {
-
-        if (risk >= 70) {
-            return "HIGH";
-        }
-
-        if (risk >= 40) {
-            return "MEDIUM";
-        }
-
-        return "LOW";
-
-    }
-
-
-    foodRiskData.forEach(function (food) {
-
-        console.log(
-            food.name +
-            " → " +
-            food.risk +
-            "% → " +
-            getRiskLevel(food.risk)
+        const response = await fetch(
+            API_URL + endpoint,
+            {
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+                ...options
+            }
         );
 
-    });
+
+        const data =
+            await response.json();
 
 
-    // ==========================================
-    // QUICK ACTION BUTTONS
-    // ==========================================
+        if (!response.ok) {
 
-    const actionButtons =
-        document.querySelectorAll(".action-button");
-
-    actionButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            console.log(
-                "Opening:",
-                this.innerText.trim()
+            throw new Error(
+                data.message ||
+                "API request failed"
             );
 
-        });
-
-    });
-
-
-    // ==========================================
-    // AI RECOMMENDATION
-    // ==========================================
-
-    function generateRecommendation(food) {
-
-        if (food.risk >= 80) {
-
-            return {
-                action: "Immediate Action Required",
-                discount: "30%",
-                restaurant: "40 KG",
-                donation: "20 KG"
-            };
-
         }
 
-        if (food.risk >= 50) {
 
-            return {
-                action: "Action Recommended",
-                discount: "20%",
-                restaurant: "20 KG",
-                donation: "10 KG"
-            };
-
-        }
-
-        return {
-            action: "Normal Monitoring",
-            discount: "10%",
-            restaurant: "Optional",
-            donation: "Optional"
-        };
+        return data;
 
     }
 
+    catch (error) {
 
-    const tomatoRecommendation =
-        generateRecommendation(foodRiskData[0]);
+        console.error(
+            "FoodLink API Error:",
+            error
+        );
 
-    console.log(
-        "Tomato AI Recommendation:",
-        tomatoRecommendation
-    );
-
-
-    // ==========================================
-    // LIVE TIME
-    // ==========================================
-
-    function updateTime() {
-
-        const now = new Date();
-
-        const time =
-            now.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit"
-            });
-
-        console.log("Current Time:", time);
-
-    }
-
-    updateTime();
-
-
-    // ==========================================
-    // DEMO NOTIFICATION
-    // ==========================================
-
-    function showNotification(message) {
-
-        const notification =
-            document.createElement("div");
-
-        notification.innerText = message;
-
-        notification.style.position = "fixed";
-        notification.style.bottom = "25px";
-        notification.style.right = "25px";
-
-        notification.style.background = "#176b43";
-        notification.style.color = "white";
-
-        notification.style.padding = "14px 20px";
-
-        notification.style.borderRadius = "10px";
-
-        notification.style.fontSize = "13px";
-
-        notification.style.zIndex = "9999";
-
-        document.body.appendChild(notification);
-
-
-        setTimeout(function () {
-
-            notification.remove();
-
-        }, 3000);
-
-    }
-
-
-    // ==========================================
-    // AI STATUS
-    // ==========================================
-
-    setTimeout(function () {
 
         showNotification(
-            "🌱 FoodLink AI is ready"
-        );
-
-    }, 1000);
-
-
-});
-
-const foodForm = document.getElementById("foodForm");
-
-if (foodForm) {
-
-    foodForm.addEventListener("submit", function (event) {
-
-        // Stop page from refreshing
-        event.preventDefault();
-
-        // ==========================================
-        // GET FORM VALUES
-        // ==========================================
-
-        const foodName =
-            document.getElementById("foodName").value.trim();
-
-        const category =
-            document.getElementById("category").value;
-
-        const quantity =
-            Number(document.getElementById("quantity").value);
-
-        const price =
-            Number(document.getElementById("price").value);
-
-        const shelfLife =
-            Number(document.getElementById("shelfLife").value);
-
-        const location =
-            document.getElementById("location").value.trim();
-
-        const description =
-            document.getElementById("description").value.trim();
-
-
-        // ==========================================
-        // BASIC VALIDATION
-        // ==========================================
-
-        if (
-            !foodName ||
-            !category ||
-            !quantity ||
-            price < 0 ||
-            !shelfLife ||
-            !location
-        ) {
-
-            showNotification(
-                "⚠️ Please fill all required fields."
-            );
-
-            return;
-        }
-
-
-        // ==========================================
-        // DEMO AI WASTE RISK
-        // ==========================================
-
-        let wasteRisk = 20;
-
-        /*
-         * This is a DEMO calculation.
-         * Later, your AI teammate will replace
-         * this with the real prediction model.
-         */
-
-        if (shelfLife <= 2) {
-            wasteRisk += 45;
-        }
-        else if (shelfLife <= 4) {
-            wasteRisk += 30;
-        }
-        else if (shelfLife <= 7) {
-            wasteRisk += 15;
-        }
-
-
-        if (quantity >= 100) {
-            wasteRisk += 15;
-        }
-        else if (quantity >= 50) {
-            wasteRisk += 8;
-        }
-
-
-        // Keep risk between 0 and 99
-        wasteRisk = Math.min(wasteRisk, 99);
-
-
-        // ==========================================
-        // DETERMINE RISK LEVEL
-        // ==========================================
-
-        let riskLevel;
-
-        if (wasteRisk >= 70) {
-            riskLevel = "HIGH";
-        }
-        else if (wasteRisk >= 40) {
-            riskLevel = "MEDIUM";
-        }
-        else {
-            riskLevel = "LOW";
-        }
-
-
-        // ==========================================
-        // AI RECOMMENDATION
-        // ==========================================
-
-        let recommendation;
-
-        if (wasteRisk >= 70) {
-
-            recommendation =
-                "Immediate action recommended. " +
-                "Consider a 30% discount or donation.";
-
-        }
-        else if (wasteRisk >= 40) {
-
-            recommendation =
-                "Monitor demand and consider a 20% discount.";
-
-        }
-        else {
-
-            recommendation =
-                "Food is currently at low waste risk.";
-
-        }
-
-
-        // ==========================================
-        // CREATE FOOD OBJECT
-        // ==========================================
-
-        const foodListing = {
-
-            id: Date.now(),
-
-            foodName: foodName,
-
-            category: category,
-
-            quantity: quantity,
-
-            price: price,
-
-            shelfLife: shelfLife,
-
-            location: location,
-
-            description: description,
-
-            wasteRisk: wasteRisk,
-
-            riskLevel: riskLevel,
-
-            recommendation: recommendation
-
-        };
-
-
-        // ==========================================
-        // SAVE TO LOCAL STORAGE
-        // ==========================================
-
-        let listings =
-            JSON.parse(
-                localStorage.getItem("foodlinkListings")
-            ) || [];
-
-        listings.push(foodListing);
-
-        localStorage.setItem(
-            "foodlinkListings",
-            JSON.stringify(listings)
+            "⚠️ Backend connection failed"
         );
 
 
-        // ==========================================
-        // SHOW RESULT
-        // ==========================================
+        return null;
 
-        showFoodListingResult(foodListing);
-
-
-        // ==========================================
-        // SUCCESS MESSAGE
-        // ==========================================
-
-        showNotification(
-            "🌱 Food listing added successfully!"
-        );
-
-
-        // ==========================================
-        // RESET FORM
-        // ==========================================
-
-        foodForm.reset();
-
-    });
+    }
 
 }
 
 
-// ==========================================
-// SHOW FOOD LISTING RESULT
-// ==========================================
+// ======================================================
+// NOTIFICATION
+// ======================================================
 
-function showFoodListingResult(food) {
+function showNotification(
+    message
+) {
 
-    // Remove old result if it exists
-    const oldResult =
-        document.getElementById("foodListingResult");
-
-    if (oldResult) {
-        oldResult.remove();
-    }
-
-
-    // Create result box
-    const result =
-        document.createElement("div");
-
-    result.id = "foodListingResult";
-
-    result.style.marginTop = "20px";
-
-    result.style.padding = "18px";
-
-    result.style.borderRadius = "12px";
-
-    result.style.background = "#f1f9f4";
-
-    result.style.border =
-        "1px solid #cfe8d8";
+    const old =
+        document.querySelector(
+            ".foodlink-notification"
+        );
 
 
-    result.innerHTML = `
+    if (old) {
 
-        <h3 style="
-            color:#176b43;
-            margin-bottom:12px;
-            font-size:16px;
-        ">
-            🤖 FoodLink AI Analysis
-        </h3>
+        old.remove();
 
-        <div style="
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:10px;
-            margin-bottom:15px;
-        ">
-
-            <div style="
-                background:white;
-                padding:12px;
-                border-radius:8px;
-            ">
-                <small>Food</small>
-                <strong style="display:block;">
-                    ${food.foodName}
-                </strong>
-            </div>
-
-            <div style="
-                background:white;
-                padding:12px;
-                border-radius:8px;
-            ">
-                <small>Quantity</small>
-                <strong style="display:block;">
-                    ${food.quantity} KG
-                </strong>
-            </div>
-
-            <div style="
-                background:white;
-                padding:12px;
-                border-radius:8px;
-            ">
-                <small>Location</small>
-                <strong style="display:block;">
-                    ${food.location}
-                </strong>
-            </div>
-
-        </div>
-
-
-        <div style="
-            background:white;
-            padding:15px;
-            border-radius:8px;
-            margin-bottom:12px;
-        ">
-
-            <small>Estimated Waste Risk</small>
-
-            <div style="
-                display:flex;
-                align-items:center;
-                gap:12px;
-                margin-top:6px;
-            ">
-
-                <div style="
-                    flex:1;
-                    height:9px;
-                    background:#e5ebe7;
-                    border-radius:10px;
-                    overflow:hidden;
-                ">
-
-                    <div style="
-                        width:${food.wasteRisk}%;
-                        height:100%;
-                        background:${
-                            food.wasteRisk >= 70
-                            ? "#dc4b4b"
-                            : food.wasteRisk >= 40
-                            ? "#d28a28"
-                            : "#29935b"
-                        };
-                    "></div>
-
-                </div>
-
-                <strong>
-                    ${food.wasteRisk}%
-                </strong>
-
-            </div>
-
-            <small style="
-                display:block;
-                margin-top:5px;
-            ">
-                Risk Level: ${food.riskLevel}
-            </small>
-
-        </div>
-
-
-        <div style="
-            background:white;
-            padding:15px;
-            border-radius:8px;
-        ">
-
-            <strong>
-                💡 AI Recommendation
-            </strong>
-
-            <p style="
-                margin-top:6px;
-                font-size:12px;
-                color:#59645e;
-            ">
-                ${food.recommendation}
-            </p>
-
-        </div>
-
-    `;
-
-
-    // Add result after form
-    foodForm.parentElement.appendChild(result);
-
-}
-
-
-// ==========================================
-// SHOW NOTIFICATION
-// ==========================================
-
-function showNotification(message) {
-
-    // Remove existing notification
-    const existing =
-        document.querySelector(".foodlink-notification");
-
-    if (existing) {
-        existing.remove();
     }
 
 
     const notification =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     notification.className =
         "foodlink-notification";
 
-    notification.innerText = message;
+
+    notification.textContent =
+        message;
 
 
-    notification.style.position = "fixed";
+    notification.style.position =
+        "fixed";
 
-    notification.style.bottom = "25px";
+    notification.style.right =
+        "25px";
 
-    notification.style.right = "25px";
+    notification.style.bottom =
+        "25px";
 
-    notification.style.background = "#176b43";
+    notification.style.zIndex =
+        "999999";
 
-    notification.style.color = "white";
+    notification.style.background =
+        "#294f38";
+
+    notification.style.color =
+        "white";
 
     notification.style.padding =
         "14px 20px";
 
     notification.style.borderRadius =
-        "10px";
+        "12px";
 
     notification.style.fontSize =
         "13px";
@@ -711,19 +133,757 @@ function showNotification(message) {
         "600";
 
     notification.style.boxShadow =
-        "0 8px 20px rgba(0,0,0,0.15)";
-
-    notification.style.zIndex =
-        "9999";
+        "0 8px 25px rgba(0,0,0,0.18)";
 
 
-    document.body.appendChild(notification);
+    document.body.appendChild(
+        notification
+    );
 
 
-    setTimeout(function () {
+    setTimeout(
+        () => {
 
-        notification.remove();
+            notification.remove();
 
-    }, 3000);
+        },
+        3500
+    );
 
 }
+
+
+// Make available to inline HTML scripts
+
+window.showNotification =
+    showNotification;
+
+
+// ======================================================
+// BACKEND CONNECTION TEST
+// ======================================================
+
+async function checkBackend() {
+
+    const result =
+        await apiRequest(
+            "/health"
+        );
+
+
+    if (result) {
+
+        console.log(
+            "✅ FoodLink backend connected"
+        );
+
+        console.log(
+            "🤖 FoodPulse:",
+            result.foodPulse
+        );
+
+        return true;
+
+    }
+
+
+    console.log(
+        "❌ Backend unavailable"
+    );
+
+    return false;
+
+}
+
+
+// ======================================================
+// GET ALL FOOD
+// ======================================================
+
+async function getFoods() {
+
+    const result =
+        await apiRequest(
+            "/foods"
+        );
+
+
+    if (!result) {
+
+        return [];
+
+    }
+
+
+    return result.foods || [];
+
+}
+
+
+// ======================================================
+// GET FOODPULSE AI ANALYSIS
+// ======================================================
+
+async function getAIAnalysis() {
+
+    const result =
+        await apiRequest(
+            "/ai/analyze"
+        );
+
+
+    if (!result) {
+
+        return [];
+
+    }
+
+
+    console.log(
+        "🤖 FoodPulse AI Analysis:",
+        result
+    );
+
+
+    return result.foods || [];
+
+}
+
+
+// ======================================================
+// ADD FOOD
+// ======================================================
+
+async function addFood(
+    foodData
+) {
+
+    const result =
+        await apiRequest(
+            "/foods",
+            {
+                method: "POST",
+
+                body:
+                    JSON.stringify(
+                        foodData
+                    )
+            }
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    showNotification(
+        "🌾 Food successfully added"
+    );
+
+
+    console.log(
+        "New food:",
+        result.food
+    );
+
+
+    return result.food;
+
+}
+
+
+// ======================================================
+// NGO MATCH
+// ======================================================
+
+async function getNGOMatch(
+    foodId
+) {
+
+    const result =
+        await apiRequest(
+            `/ngo/match/${foodId}`
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    console.log(
+        "❤️ NGO Match:",
+        result
+    );
+
+
+    return result;
+
+}
+
+
+// ======================================================
+// ACCEPT NGO DONATION
+// ======================================================
+
+async function acceptDonation(
+    foodId,
+    ngoName
+) {
+
+    const result =
+        await apiRequest(
+            "/donations",
+            {
+                method: "POST",
+
+                body:
+                    JSON.stringify({
+
+                        foodId:
+                            foodId,
+
+                        ngoName:
+                            ngoName
+
+                    })
+            }
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    showNotification(
+        "❤️ NGO accepted the donation"
+    );
+
+
+    return result.donation;
+
+}
+
+
+// ======================================================
+// CREATE VOLUNTEER TASK
+// ======================================================
+
+async function createVolunteerTask(
+    foodId,
+    volunteerId
+) {
+
+    const result =
+        await apiRequest(
+            "/volunteer/tasks",
+            {
+                method: "POST",
+
+                body:
+                    JSON.stringify({
+
+                        foodId:
+                            foodId,
+
+                        volunteerId:
+                            volunteerId
+
+                    })
+            }
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    showNotification(
+        "🚚 Volunteer task created"
+    );
+
+
+    return result.task;
+
+}
+
+
+// ======================================================
+// TRACKING
+// ======================================================
+
+async function getTracking(
+    foodId
+) {
+
+    const result =
+        await apiRequest(
+            `/tracking/${foodId}`
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    console.log(
+        "🚚 Tracking:",
+        result.tracking
+    );
+
+
+    return result.tracking;
+
+}
+
+
+// ======================================================
+// ANALYTICS
+// ======================================================
+
+async function getAnalytics() {
+
+    const result =
+        await apiRequest(
+            "/analytics"
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    console.log(
+        "📊 Analytics:",
+        result.analytics
+    );
+
+
+    return result.analytics;
+
+}
+
+
+// ======================================================
+// PURCHASE FOOD
+// ======================================================
+
+async function purchaseFood(
+    foodId,
+    quantity
+) {
+
+    const result =
+        await apiRequest(
+            "/orders",
+            {
+                method: "POST",
+
+                body:
+                    JSON.stringify({
+
+                        foodId:
+                            foodId,
+
+                        quantity:
+                            quantity
+
+                    })
+            }
+        );
+
+
+    if (!result) {
+
+        return null;
+
+    }
+
+
+    showNotification(
+        "🛒 Food purchase successful"
+    );
+
+
+    return result.order;
+
+}
+
+
+// ======================================================
+// DASHBOARD FOOD LOADER
+// ======================================================
+
+async function loadDashboardFood() {
+
+    const foods =
+        await getFoods();
+
+
+    console.log(
+        "📦 Dashboard foods:",
+        foods
+    );
+
+
+    return foods;
+
+}
+
+
+// ======================================================
+// MARKETPLACE LOADER
+// ======================================================
+
+async function loadMarketplace() {
+
+    const foods =
+        await getFoods();
+
+
+    const available =
+        foods.filter(
+            food =>
+                food.status ===
+                "available"
+        );
+
+
+    console.log(
+        "🏪 Marketplace:",
+        available
+    );
+
+
+    return available;
+
+}
+
+
+// ======================================================
+// AI PAGE LOADER
+// ======================================================
+
+async function loadAIPage() {
+
+    const foods =
+        await getAIAnalysis();
+
+
+    console.log(
+        "🤖 AI page data:",
+        foods
+    );
+
+
+    return foods;
+
+}
+
+
+// ======================================================
+// NGO PAGE LOADER
+// ======================================================
+
+async function loadNGOPage() {
+
+    const foods =
+        await getFoods();
+
+
+    const urgent =
+        foods.filter(
+            food =>
+                food.risk >= 75 &&
+                food.status ===
+                "available"
+        );
+
+
+    console.log(
+        "❤️ NGO urgent food:",
+        urgent
+    );
+
+
+    return urgent;
+
+}
+
+
+// ======================================================
+// VOLUNTEER PAGE LOADER
+// ======================================================
+
+async function loadVolunteerTasks() {
+
+    const foods =
+        await getFoods();
+
+
+    const tasks =
+        foods.filter(
+            food =>
+                food.risk >= 75
+        );
+
+
+    console.log(
+        "🙋 Volunteer tasks:",
+        tasks
+    );
+
+
+    return tasks;
+
+}
+
+
+// ======================================================
+// TRACKING PAGE LOADER
+// ======================================================
+
+async function loadTracking(
+    foodId = 2
+) {
+
+    const tracking =
+        await getTracking(
+            foodId
+        );
+
+
+    if (tracking) {
+
+        console.log(
+            "📍 Current tracking:",
+            tracking
+        );
+
+    }
+
+
+    return tracking;
+
+}
+
+
+// ======================================================
+// ANALYTICS PAGE LOADER
+// ======================================================
+
+async function loadAnalytics() {
+
+    const analytics =
+        await getAnalytics();
+
+
+    if (analytics) {
+
+        console.log(
+            "📊 Current analytics:",
+            analytics
+        );
+
+    }
+
+
+    return analytics;
+
+}
+
+
+// ======================================================
+// AUTO DETECT PAGE
+// ======================================================
+
+function getCurrentPage() {
+
+    const file =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+
+    return file;
+
+}
+
+
+// ======================================================
+// PAGE INITIALIZATION
+// ======================================================
+
+async function initializeFoodLink() {
+
+    console.log(
+        "🌱 FoodLink + FoodPulse AI loaded"
+    );
+
+
+    const connected =
+        await checkBackend();
+
+
+    if (!connected) {
+
+        console.warn(
+            "Backend is not running."
+        );
+
+        return;
+
+    }
+
+
+    const page =
+        getCurrentPage();
+
+
+    console.log(
+        "📄 Current page:",
+        page
+    );
+
+
+    switch (page) {
+
+        case "index.html":
+
+            await loadDashboardFood();
+
+            break;
+
+
+        case "marketplace.html":
+
+            await loadMarketplace();
+
+            break;
+
+
+        case "ai.html":
+
+            await loadAIPage();
+
+            break;
+
+
+        case "ngo.html":
+
+            await loadNGOPage();
+
+            break;
+
+
+        case "volunteer.html":
+
+            await loadVolunteerTasks();
+
+            break;
+
+
+        case "tracking.html":
+
+            await loadTracking();
+
+            break;
+
+
+        case "analytics.html":
+
+            await loadAnalytics();
+
+            break;
+
+
+        default:
+
+            console.log(
+                "No special loader for this page."
+            );
+
+    }
+
+}
+
+
+// ======================================================
+// GLOBAL FUNCTIONS
+// ======================================================
+
+window.apiRequest =
+    apiRequest;
+
+window.getFoods =
+    getFoods;
+
+window.getAIAnalysis =
+    getAIAnalysis;
+
+window.addFood =
+    addFood;
+
+window.getNGOMatch =
+    getNGOMatch;
+
+window.acceptDonation =
+    acceptDonation;
+
+window.createVolunteerTask =
+    createVolunteerTask;
+
+window.getTracking =
+    getTracking;
+
+window.getAnalytics =
+    getAnalytics;
+
+window.purchaseFood =
+    purchaseFood;
+
+window.loadMarketplace =
+    loadMarketplace;
+
+window.loadAIPage =
+    loadAIPage;
+
+window.loadNGOPage =
+    loadNGOPage;
+
+window.loadVolunteerTasks =
+    loadVolunteerTasks;
+
+window.loadTracking =
+    loadTracking;
+
+window.loadAnalytics =
+    loadAnalytics;
+
+
+// ======================================================
+// START
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initializeFoodLink
+);

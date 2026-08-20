@@ -1,154 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FoodLink AI | Dashboard</title>
+    <title>FoodLink | FoodPulse AI</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar">
 
-        <div class="logo">
-            🌱 <span>FoodLink</span> AI
+        <div class="brand">
+            <div class="brand-icon">🌱</div>
+
+            <div>
+                <h1>FoodLink</h1>
+                <span>FoodPulse AI</span>
+            </div>
         </div>
 
-        <nav>
 
-            <a href="index.html" class="nav-link active">
-                🏠 <span>Dashboard</span>
+        <nav class="sidebar-nav">
+
+            <a href="index.html" class="nav-item active">
+                <span>🏠</span>
+                <span>Dashboard</span>
             </a>
 
-            <a href="farmer.html" class="nav-link">
-                👨‍🌾 <span>Farmer</span>
+            <a href="farmer.html" class="nav-item">
+                <span>🌾</span>
+                <span>Farmer</span>
             </a>
 
-            <a href="marketplace.html" class="nav-link">
-                🛒 <span>Marketplace</span>
+            <a href="marketplace.html" class="nav-item">
+                <span>🏪</span>
+                <span>Marketplace</span>
             </a>
 
-            <a href="ai.html" class="nav-link">
-                🤖 <span>AI Prediction</span>
+            <a href="ai.html" class="nav-item">
+                <span>🤖</span>
+                <span>FoodPulse AI</span>
             </a>
 
-            <a href="ngo.html" class="nav-link">
-                🤝 <span>NGO</span>
+            <a href="consumer.html" class="nav-item">
+                <span>👤</span>
+                <span>Consumer</span>
             </a>
 
-            <a href="analytics.html" class="nav-link">
-                📊 <span>Analytics</span>
+            <a href="ngo.html" class="nav-item">
+                <span>❤️</span>
+                <span>NGO</span>
+            </a>
+
+            <a href="volunteer.html" class="nav-item">
+                <span>🙋</span>
+                <span>Volunteer</span>
+            </a>
+
+            <a href="tracking.html" class="nav-item">
+                <span>🚚</span>
+                <span>Tracking</span>
+            </a>
+
+            <a href="analytics.html" class="nav-item">
+                <span>📊</span>
+                <span>Analytics</span>
             </a>
 
         </nav>
 
-        <div class="sidebar-bottom">
-            <p>🌍 Reducing Food Waste</p>
-            <small>Farm → Market → Consumer</small>
+
+        <!-- AI STATUS -->
+
+        <div class="ai-status">
+
+            <div class="status-dot"></div>
+
+            <div>
+                <strong>FoodPulse AI</strong>
+                <small>System Active</small>
+            </div>
+
         </div>
 
     </aside>
 
 
     <!-- ================= MAIN CONTENT ================= -->
+
     <main class="main-content">
 
-        <!-- TOP BAR -->
-        <header class="topbar">
+        <!-- HEADER -->
+
+        <header class="top-header">
 
             <div>
-                <h1>FoodLink AI Dashboard</h1>
-                <p>AI-powered food waste reduction platform</p>
+
+                <h2>FoodLink Dashboard</h2>
+
+                <p>
+                    Powered by FoodPulse AI —
+                    Predict. Prevent. Redirect. Rescue.
+                </p>
+
             </div>
 
-            <div class="user-profile">
-                <div class="avatar">TL</div>
-
-                <div>
-                    <strong>Team Leader</strong>
-                    <small>Administrator</small>
-                </div>
+            <div class="system-badge">
+                🟢 AI Monitoring
             </div>
 
         </header>
 
 
         <!-- ================= WELCOME ================= -->
-        <section class="welcome">
+
+        <section class="welcome-card">
 
             <div>
-                <h2>Welcome to FoodLink AI 👋</h2>
+
+                <h2>
+                    Welcome to FoodLink 👋
+                </h2>
 
                 <p>
-                    Predict food waste, connect surplus food with buyers
-                    and NGOs, and rescue food before it gets wasted.
+                    Connect surplus food with the right market,
+                    consumer or NGO before it becomes waste.
                 </p>
+
             </div>
 
-            <a href="ai.html" class="primary-button">
-                🤖 Run AI Prediction
-            </a>
+            <div class="welcome-ai">
+
+                🤖
+
+                <span>
+                    FoodPulse AI
+                    <small>Active</small>
+                </span>
+
+            </div>
 
         </section>
 
 
         <!-- ================= STATISTICS ================= -->
+
         <section class="stats-grid">
 
-            <!-- Food Saved -->
+
+            <!-- FOOD SAVED -->
+
             <div class="stat-card">
 
                 <div class="stat-icon green">
-                    🍚
+                    🌱
                 </div>
 
                 <div>
+
                     <p>Food Saved</p>
-                    <h2>1,250 <span>KG</span></h2>
-                    <small>↑ 18% this month</small>
+
+                    <h3 id="foodSaved">
+                        1,250 KG
+                    </h3>
+
+                    <span class="positive">
+                        ↑ 18% this month
+                    </span>
+
                 </div>
 
             </div>
 
 
-            <!-- Waste Reduced -->
-            <div class="stat-card">
+            <!-- FOOD AT RISK -->
 
-                <div class="stat-icon blue">
-                    ♻️
-                </div>
-
-                <div>
-                    <p>Waste Reduced</p>
-                    <h2>980 <span>KG</span></h2>
-                    <small>↑ 12% this month</small>
-                </div>
-
-            </div>
-
-
-            <!-- Active Listings -->
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    📦
-                </div>
-
-                <div>
-                    <p>Active Listings</p>
-                    <h2>42</h2>
-                    <small>12 new today</small>
-                </div>
-
-            </div>
-
-
-            <!-- Food at Risk -->
             <div class="stat-card">
 
                 <div class="stat-icon red">
@@ -156,9 +189,67 @@
                 </div>
 
                 <div>
-                    <p>Food at Risk</p>
-                    <h2>17</h2>
-                    <small>Needs immediate action</small>
+
+                    <p>Food At Risk</p>
+
+                    <h3 id="foodAtRisk">
+                        425 KG
+                    </h3>
+
+                    <span class="danger-text">
+                        Needs attention
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- VALUE RECOVERED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    💰
+                </div>
+
+                <div>
+
+                    <p>Value Recovered</p>
+
+                    <h3 id="valueRecovered">
+                        ₹48,500
+                    </h3>
+
+                    <span class="positive">
+                        ↑ 12% this month
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- WASTE PREVENTED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <p>Waste Prevented</p>
+
+                    <h3 id="wastePrevented">
+                        87%
+                    </h3>
+
+                    <span class="positive">
+                        AI efficiency
+                    </span>
+
                 </div>
 
             </div>
@@ -166,119 +257,346 @@
         </section>
 
 
-        <!-- ================= MAIN GRID ================= -->
-        <section class="dashboard-grid">
+        <!-- ================= FOOD AT RISK ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        ⚠️ Food at Risk
+                    </h2>
+
+                    <p>
+                        Food that may become waste soon
+                    </p>
+
+                </div>
+
+                <a href="ai.html" class="view-link">
+                    View AI Analysis →
+                </a>
+
+            </div>
 
 
-            <!-- ================= FOOD AT RISK ================= -->
-            <div class="dashboard-card">
+            <div class="food-list">
 
-                <div class="card-header">
 
-                    <div>
-                        <h3>⚠️ Food at Risk</h3>
-                        <p>Products that may become waste soon</p>
+                <!-- TOMATO -->
+
+                <div class="food-item">
+
+                    <div class="food-image tomato">
+                        🍅
                     </div>
 
-                    <a href="ai.html">View All →</a>
+                    <div class="food-info">
+
+                        <h3>Tomatoes</h3>
+
+                        <p>
+                            100 KG • 3 days left
+                        </p>
+
+                    </div>
+
+                    <div class="risk-container">
+
+                        <span class="risk-label critical">
+                            87% CRITICAL
+                        </span>
+
+                        <div class="risk-bar">
+
+                            <div
+                                class="risk-fill critical-fill"
+                                style="width:87%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="small-button"
+                        onclick="analyzeFood('Tomatoes', 100, 3)">
+
+                        Analyze
+
+                    </button>
 
                 </div>
 
 
-                <div class="food-list">
+                <!-- BANANA -->
 
-                    <!-- Tomato -->
-                    <div class="food-item">
+                <div class="food-item">
 
-                        <div class="food-info">
+                    <div class="food-image banana">
+                        🍌
+                    </div>
 
-                            <div class="food-image tomato">
-                                🍅
+                    <div class="food-info">
+
+                        <h3>Bananas</h3>
+
+                        <p>
+                            75 KG • 2 days left
+                        </p>
+
+                    </div>
+
+                    <div class="risk-container">
+
+                        <span class="risk-label high">
+                            65% HIGH
+                        </span>
+
+                        <div class="risk-bar">
+
+                            <div
+                                class="risk-fill high-fill"
+                                style="width:65%">
                             </div>
 
-                            <div>
-                                <strong>Tomatoes</strong>
-                                <small>100 KG • 3 days left</small>
-                            </div>
-
-                        </div>
-
-                        <div class="risk">
-                            <span class="risk-high">87%</span>
-                            <small>High Risk</small>
                         </div>
 
                     </div>
 
+                    <button
+                        class="small-button"
+                        onclick="analyzeFood('Bananas', 75, 2)">
 
-                    <!-- Banana -->
-                    <div class="food-item">
+                        Analyze
 
-                        <div class="food-info">
+                    </button>
 
-                            <div class="food-image banana">
-                                🍌
+                </div>
+
+
+                <!-- POTATO -->
+
+                <div class="food-item">
+
+                    <div class="food-image potato">
+                        🥔
+                    </div>
+
+                    <div class="food-info">
+
+                        <h3>Potatoes</h3>
+
+                        <p>
+                            150 KG • 7 days left
+                        </p>
+
+                    </div>
+
+                    <div class="risk-container">
+
+                        <span class="risk-label medium">
+                            35% MEDIUM
+                        </span>
+
+                        <div class="risk-bar">
+
+                            <div
+                                class="risk-fill medium-fill"
+                                style="width:35%">
                             </div>
 
-                            <div>
-                                <strong>Bananas</strong>
-                                <small>75 KG • 2 days left</small>
-                            </div>
-
-                        </div>
-
-                        <div class="risk">
-                            <span class="risk-high">73%</span>
-                            <small>High Risk</small>
                         </div>
 
                     </div>
 
+                    <button
+                        class="small-button"
+                        onclick="analyzeFood('Potatoes', 150, 7)">
 
-                    <!-- Potato -->
-                    <div class="food-item">
+                        Analyze
 
-                        <div class="food-info">
+                    </button>
 
-                            <div class="food-image potato">
-                                🥔
+                </div>
+
+
+                <!-- RICE -->
+
+                <div class="food-item">
+
+                    <div class="food-image rice">
+                        🍚
+                    </div>
+
+                    <div class="food-info">
+
+                        <h3>Rice</h3>
+
+                        <p>
+                            300 KG • 30 days left
+                        </p>
+
+                    </div>
+
+                    <div class="risk-container">
+
+                        <span class="risk-label low">
+                            12% LOW
+                        </span>
+
+                        <div class="risk-bar">
+
+                            <div
+                                class="risk-fill low-fill"
+                                style="width:12%">
                             </div>
 
-                            <div>
-                                <strong>Potatoes</strong>
-                                <small>150 KG • 7 days left</small>
-                            </div>
-
-                        </div>
-
-                        <div class="risk">
-                            <span class="risk-medium">42%</span>
-                            <small>Medium Risk</small>
                         </div>
 
                     </div>
 
+                    <button
+                        class="small-button"
+                        onclick="analyzeFood('Rice', 300, 30)">
 
-                    <!-- Rice -->
-                    <div class="food-item">
+                        Analyze
 
-                        <div class="food-info">
+                    </button>
 
-                            <div class="food-image rice">
-                                🍚
-                            </div>
+                </div>
 
-                            <div>
-                                <strong>Rice</strong>
-                                <small>300 KG • 30 days left</small>
-                            </div>
+            </div>
 
-                        </div>
+        </section>
 
-                        <div class="risk">
-                            <span class="risk-low">15%</span>
-                            <small>Low Risk</small>
-                        </div>
+
+        <!-- ================= FOODPULSE AI ================= -->
+
+        <section class="ai-recommendation-card">
+
+            <div class="ai-card-header">
+
+                <div class="ai-title">
+
+                    <div class="ai-icon">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            FoodPulse AI Recommendation
+                        </h2>
+
+                        <p>
+                            Intelligent action for food at risk
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <span class="ai-badge">
+                    AI ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="ai-analysis">
+
+                <div class="ai-food">
+
+                    <span class="big-food-icon">
+                        🍅
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Tomatoes — 100 KG
+                        </h3>
+
+                        <p>
+                            Current waste risk
+                        </p>
+
+                        <strong>
+                            87%
+                        </strong>
+
+                        <span class="critical">
+                            Critical
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-reasons">
+
+                    <h3>
+                        Why is the food at risk?
+                    </h3>
+
+                    <div class="reason">
+                        ✓ Short shelf life
+                    </div>
+
+                    <div class="reason">
+                        ✓ Low local demand
+                    </div>
+
+                    <div class="reason">
+                        ✓ High nearby inventory
+                    </div>
+
+                    <div class="reason">
+                        ✓ Quantity exceeds predicted demand
+                    </div>
+
+                </div>
+
+
+                <div class="ai-plan">
+
+                    <h3>
+                        Recommended Rescue Plan
+                    </h3>
+
+                    <div class="plan-row">
+
+                        <span>🏪 Market B</span>
+
+                        <strong>60 KG</strong>
+
+                    </div>
+
+                    <div class="plan-row">
+
+                        <span>🏷️ Discount</span>
+
+                        <strong>20 KG</strong>
+
+                    </div>
+
+                    <div class="plan-row">
+
+                        <span>❤️ NGO</span>
+
+                        <strong>10 KG</strong>
+
+                    </div>
+
+                    <div class="plan-row">
+
+                        <span>♻️ Processing</span>
+
+                        <strong>10 KG</strong>
 
                     </div>
 
@@ -287,81 +605,23 @@
             </div>
 
 
-            <!-- ================= AI RECOMMENDATION ================= -->
-            <div class="dashboard-card ai-card">
+            <div class="ai-actions">
 
-                <div class="card-header">
+                <button
+                    class="primary-button"
+                    onclick="generateRescuePlan()">
 
-                    <div>
-                        <h3>🤖 AI Recommendation</h3>
-                        <p>Smart actions to prevent food waste</p>
-                    </div>
+                    🤖 Generate Rescue Plan
 
-                    <span class="ai-status">AI ACTIVE</span>
+                </button>
 
-                </div>
+                <a
+                    href="ai.html"
+                    class="secondary-button">
 
+                    View Full AI Analysis →
 
-                <div class="ai-result">
-
-                    <div class="ai-product">
-                        <div class="large-food-icon">🍅</div>
-
-                        <div>
-                            <strong>Tomatoes</strong>
-                            <p>100 KG available</p>
-                        </div>
-                    </div>
-
-
-                    <div class="ai-risk">
-
-                        <span>Waste Risk</span>
-
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 87%;"></div>
-                        </div>
-
-                        <strong>87%</strong>
-
-                    </div>
-
-
-                    <div class="recommendation">
-
-                        <h4>Recommended Action</h4>
-
-                        <div class="recommendation-item">
-                            <span>🏪</span>
-                            <p>
-                                Sell <strong>40 KG</strong>
-                                to nearby restaurants
-                            </p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <span>🤝</span>
-                            <p>
-                                Donate <strong>20 KG</strong>
-                                to an NGO
-                            </p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <span>🏷️</span>
-                            <p>
-                                Apply <strong>30% discount</strong>
-                                to remaining stock
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <a href="ai.html" class="secondary-button">
-                        View Full AI Analysis →
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
@@ -369,45 +629,151 @@
 
 
         <!-- ================= QUICK ACTIONS ================= -->
-        <section class="dashboard-card quick-actions">
 
-            <div class="card-header">
+        <section class="dashboard-card">
+
+            <div class="section-header">
 
                 <div>
-                    <h3>⚡ Quick Actions</h3>
-                    <p>Manage your FoodLink platform</p>
+
+                    <h2>
+                        ⚡ Quick Actions
+                    </h2>
+
+                    <p>
+                        Manage your FoodLink platform
+                    </p>
+
                 </div>
 
             </div>
 
 
-            <div class="action-grid">
+            <div class="quick-actions">
 
-                <a href="farmer.html" class="action-button">
-                    <span>👨‍🌾</span>
-                    <strong>Add Food</strong>
-                    <small>Create a new food listing</small>
+                <a
+                    href="farmer.html"
+                    class="quick-action">
+
+                    <span>🌾</span>
+
+                    <div>
+
+                        <strong>
+                            Add Produce
+                        </strong>
+
+                        <small>
+                            Register new food
+                        </small>
+
+                    </div>
+
                 </a>
 
 
-                <a href="marketplace.html" class="action-button">
-                    <span>🛒</span>
-                    <strong>Marketplace</strong>
-                    <small>Find available food</small>
-                </a>
+                <a
+                    href="ai.html"
+                    class="quick-action">
 
-
-                <a href="ai.html" class="action-button">
                     <span>🤖</span>
-                    <strong>AI Prediction</strong>
-                    <small>Check waste risk</small>
+
+                    <div>
+
+                        <strong>
+                            Analyze Food
+                        </strong>
+
+                        <small>
+                            Check waste risk
+                        </small>
+
+                    </div>
+
                 </a>
 
 
-                <a href="ngo.html" class="action-button">
-                    <span>🤝</span>
-                    <strong>Donate Food</strong>
-                    <small>Connect with NGOs</small>
+                <a
+                    href="marketplace.html"
+                    class="quick-action">
+
+                    <span>🏪</span>
+
+                    <div>
+
+                        <strong>
+                            Marketplace
+                        </strong>
+
+                        <small>
+                            Find best demand
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="ngo.html"
+                    class="quick-action">
+
+                    <span>❤️</span>
+
+                    <div>
+
+                        <strong>
+                            Rescue Food
+                        </strong>
+
+                        <small>
+                            Connect with NGOs
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="consumer.html"
+                    class="quick-action">
+
+                    <span>👤</span>
+
+                    <div>
+
+                        <strong>
+                            Consumer
+                        </strong>
+
+                        <small>
+                            Buy surplus food
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="tracking.html"
+                    class="quick-action">
+
+                    <span>🚚</span>
+
+                    <div>
+
+                        <strong>
+                            Track Delivery
+                        </strong>
+
+                        <small>
+                            Monitor food movement
+                        </small>
+
+                    </div>
+
                 </a>
 
             </div>
@@ -416,24 +782,28 @@
 
 
         <!-- ================= FOOTER ================= -->
-        <footer>
+
+        <footer class="footer">
 
             <p>
-                🌱 <strong>FoodLink AI</strong> —
-                Connecting Farm → Market → Consumer
+                🌱 FoodLink
+                <span>×</span>
+                🤖 FoodPulse AI
             </p>
 
-            <p>
-                © 2026 FoodLink AI Hackathon Project
-            </p>
+            <small>
+                Predict • Prevent • Redirect • Rescue
+            </small>
 
         </footer>
 
     </main>
 
 
-    <!-- JavaScript -->
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
